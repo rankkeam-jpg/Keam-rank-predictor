@@ -497,9 +497,12 @@
 </head>
 <body>
 <!-- Hidden form for Netlify build-time detection -->
-<form name="keam-leads" netlify data-netlify="true" hidden>
+<form name="keam-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="keam-leads">
+  <input name="bot-field">
   <input type="text" name="name">
   <input type="tel" name="phone">
+  <button type="submit">Submit</button>
 </form>
 
 <div class="page">
@@ -530,12 +533,8 @@
       <div class="section-label">Entrance exam</div>
       <div class="input-grid">
         <div class="field">
-          <label>Attempts (A)</label>
-          <input type="number" id="att" min="0" max="150" placeholder="e.g. 120">
-        </div>
-        <div class="field">
-          <label>Correct (C)</label>
-          <input type="number" id="cor" min="0" placeholder="e.g. 90">
+          <label>Normalized Score (out of 300)</label>
+          <input type="number" id="normalizedScore" step="any" min="0" max="300" placeholder="e.g. 185.2451">
         </div>
       </div>
     </div>
@@ -690,8 +689,7 @@ function chance(catRank, cutoff) {
 }
 
 function calculate() {
-  const A = parseFloat(document.getElementById("att").value);
-  const C = parseFloat(document.getElementById("cor").value);
+  const NS = parseFloat(document.getElementById("normalizedScore").value);
   const P = parseFloat(document.getElementById("phy").value);
   const Ch = parseFloat(document.getElementById("che").value);
   const M = parseFloat(document.getElementById("mat").value);
@@ -700,17 +698,14 @@ function calculate() {
   const errEl = document.getElementById("err");
   errEl.style.display = "none";
 
-  if([A,C,P,Ch,M].some(isNaN) || !catKey) {
+  if([NS,P,Ch,M].some(isNaN) || !catKey) {
     errEl.textContent = "Please fill in all fields before calculating.";
     errEl.style.display = "block"; return;
   }
-  if(C > A)   { errEl.textContent = "Error: Correct answers cannot exceed total attempts."; errEl.style.display="block"; return; }
-  if(A > 150) { errEl.textContent = "Error: Attempts cannot exceed 150."; errEl.style.display="block"; return; }
+  if(NS < 0 || NS > 300) { errEl.textContent = "Error: Normalized Score must be between 0 and 300."; errEl.style.display="block"; return; }
   if([P,Ch,M].some(v=>v<0||v>120)) { errEl.textContent = "Error: Board marks must be between 0 and 120."; errEl.style.display="block"; return; }
 
-  const Wrong = A - C;
-  const Raw_KEAM = (C * 4) - (Wrong * 1);
-  const KEAM_Index = (Raw_KEAM / 600) * 300;
+  const KEAM_Index = NS;
 
   const P_100 = (P/120)*100, Ch_100 = (Ch/120)*100, M_100 = (M/120)*100;
   const S_P  = 75 + ((P_100  - 70) / 16) * 15;
@@ -722,12 +717,10 @@ function calculate() {
   const cat = CAT_MAP[catKey];
   const sm = smRange(Index);
   const catRank = Math.round(sm.mid / cat.mult);
-  const accuracy = A > 0 ? (C / A * 100) : 0;
-
   let strategy, risk, riskClass;
-  if(accuracy >= 80)      { strategy = "Aggressive";   risk = "Low";      riskClass = "badge-green"; }
-  else if(accuracy >= 60) { strategy = "Balanced";     risk = "Moderate"; riskClass = "badge-orange"; }
-  else                    { strategy = "Conservative"; risk = "High";     riskClass = "badge-red"; }
+  if(NS >= 220)      { strategy = "Aggressive";   risk = "Low";      riskClass = "badge-green"; }
+  else if(NS >= 150) { strategy = "Balanced";     risk = "Moderate"; riskClass = "badge-orange"; }
+  else               { strategy = "Conservative"; risk = "High";     riskClass = "badge-red"; }
 
   const collegeCandidates = COLLEGES
     .map(col => ({...col, ch: chance(catRank, col.cutoff)}))
@@ -745,12 +738,12 @@ function calculate() {
     `Your board index contributes ${boardShare}% of the final score. ${dom} is the dominant component — a +5 mark improvement in your weaker board subject can shift your index by up to 8 points and move you hundreds of ranks.`,
     cat.mult > 1
       ? `The ${catKey} category multiplies admission power by ${cat.mult}×, pushing your effective rank to ~${catRank.toLocaleString()} (equivalent SM ~${sm.mid.toLocaleString()}). Government college seats open up significantly — list them early in your options.`
-      : `GEN category carries no rank multiplier. Every additional correct answer directly improves your competitive position. Focus on high-accuracy attempts over volume.`,
+      : `GEN category carries no rank multiplier. Every point in your normalized score directly improves your competitive position. Aim for a normalized score above 220 for top college allotments.`,
     strategy === "Aggressive"
-      ? "High accuracy signals strong preparation. In Trial Allotment round 1, target Tier 1 seats (CET / GEC Thrissur) boldly — you have score headroom to absorb minor cutoff shifts."
+      ? "Strong normalized score signals excellent exam performance. In Trial Allotment round 1, target Tier 1 seats (CET / GEC Thrissur) boldly — you have score headroom to absorb minor cutoff shifts."
       : strategy === "Balanced"
-      ? "A balanced attempt strategy. In Trial Allotment, stack one Tier 1 reach choice above safe Tier 2 choices. This maximises upside without risking a missed allotment."
-      : "Conservative attempt pattern. Fill the maximum number of college-branch choices in Trial Allotment, prioritising Tier 2 government colleges. A broader list dramatically reduces the risk of going unallotted."
+      ? "A solid normalized score gives you balanced options. In Trial Allotment, stack one Tier 1 reach choice above safe Tier 2 choices. This maximises upside without risking a missed allotment."
+      : "A lower normalized score narrows your options. Fill the maximum number of college-branch choices in Trial Allotment, prioritising Tier 2 government colleges. A broader list dramatically reduces the risk of going unallotted."
   ];
 
   const html = `
@@ -759,9 +752,9 @@ function calculate() {
     <div class="banner-title">Score summary</div>
     <div class="metrics-grid">
       <div class="metric">
-        <div class="m-lbl">KEAM raw score</div>
-        <div class="m-val">${Raw_KEAM.toFixed(1)}</div>
-        <div class="m-max">/ 600</div>
+        <div class="m-lbl">Normalized score</div>
+        <div class="m-val">${NS.toFixed(2)}</div>
+        <div class="m-max">/ 300</div>
       </div>
       <div class="metric">
         <div class="m-lbl">Entrance index</div>
@@ -806,16 +799,8 @@ function calculate() {
       <div class="info-card-label">Performance stats</div>
       <div class="stat-list">
         <div class="stat-row">
-          <span class="s-lbl">Accuracy</span>
-          <span class="s-val">${accuracy.toFixed(1)}%</span>
-        </div>
-        <div class="stat-row">
-          <span class="s-lbl">Attempts</span>
-          <span class="s-val">${A} / 150</span>
-        </div>
-        <div class="stat-row">
-          <span class="s-lbl">Wrong answers</span>
-          <span class="s-val">${Wrong}</span>
+          <span class="s-lbl">Normalized score</span>
+          <span class="s-val">${NS.toFixed(2)} / 300</span>
         </div>
         <div class="stat-row">
           <span class="s-lbl">Strategy</span>
@@ -863,9 +848,7 @@ function calculate() {
 }
 
 function openGate() {
-  // Validate inputs first before showing gate
-  const A = parseFloat(document.getElementById("att").value);
-  const C = parseFloat(document.getElementById("cor").value);
+  const NS = parseFloat(document.getElementById("normalizedScore").value);
   const P = parseFloat(document.getElementById("phy").value);
   const Ch = parseFloat(document.getElementById("che").value);
   const M = parseFloat(document.getElementById("mat").value);
@@ -874,15 +857,13 @@ function openGate() {
   const errEl = document.getElementById("err");
   errEl.style.display = "none";
 
-  if([A,C,P,Ch,M].some(isNaN) || !catKey) {
+  if([NS,P,Ch,M].some(isNaN) || !catKey) {
     errEl.textContent = "Please fill in all fields before calculating.";
     errEl.style.display = "block"; return;
   }
-  if(C > A)   { errEl.textContent = "Error: Correct answers cannot exceed total attempts."; errEl.style.display="block"; return; }
-  if(A > 150) { errEl.textContent = "Error: Attempts cannot exceed 150."; errEl.style.display="block"; return; }
+  if(NS < 0 || NS > 300) { errEl.textContent = "Error: Normalized Score must be between 0 and 300."; errEl.style.display="block"; return; }
   if([P,Ch,M].some(v=>v<0||v>120)) { errEl.textContent = "Error: Board marks must be between 0 and 120."; errEl.style.display="block"; return; }
 
-  // All valid — show the gate
   const overlay = document.getElementById("gate-overlay");
   overlay.style.display = "flex";
   setTimeout(() => document.getElementById("gate-name").focus(), 100);
@@ -925,3 +906,4 @@ document.addEventListener("click", function(e) {
 </script>
 </body>
 </html>
+

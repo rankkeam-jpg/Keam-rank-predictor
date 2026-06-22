@@ -1,168 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - KEAM Rank Predictor 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — KEAM Rank Predictor 2026</title>
+<meta name="description" content="Privacy Policy for KEAM Rank Predictor. We do not collect, store, or share any personal data from users of our Kerala engineering rank estimation tool.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.keamrankpredictor.in/privacy.html">
+
+<!-- Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e29;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --text2: #8b90a0;
+    --text3: #555a6e;
+    --accent: #e8c547;
+    --accent2: #f0d870;
+    --accent-dim: rgba(232,197,71,0.12);
+    --accent-dim2: rgba(232,197,71,0.06);
+    --green: #4ade80;
+    --green-dim: rgba(74,222,128,0.12);
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 0 24px 80px; }
+
+  .nav-links {
+    display: flex; flex-wrap: wrap; gap: 10px 14px;
+    align-items: center; justify-content: flex-end;
+  }
+  .nav-link { font-size: 13px; color: var(--text2); text-decoration: none; font-weight: 500; white-space: nowrap; }
+  .nav-link-active { color: var(--accent); font-weight: 600; }
+  .nav-link-pill { font-size: 12px; color: var(--text3); border: 1px solid var(--border2); border-radius: 6px; padding: 5px 10px; }
+  @media (max-width: 480px) { .nav-links { gap: 8px 12px; justify-content: center; } .nav-link { font-size: 12.5px; } }
+
+  .header {
+    padding: 48px 0 40px; display: flex; flex-direction: column; gap: 6px;
+    border-bottom: 1px solid var(--border); margin-bottom: 40px;
+  }
+  .header-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 400; line-height: 1.1; color: var(--text); letter-spacing: -0.02em; }
+  .header h1 em { font-style: italic; color: var(--accent); }
+  .header-sub { font-size: 14px; color: var(--text2); margin-top: 4px; }
+
+  .updated-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--bg3); border: 1px solid var(--border2); border-radius: 20px;
+    padding: 4px 12px; font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--text3); margin-bottom: 28px;
+  }
+  .updated-badge span { color: var(--accent); }
+
+  /* No-data highlight banner */
+  .no-data-banner {
+    background: var(--green-dim);
+    border: 1px solid rgba(74,222,128,0.25);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .no-data-banner .ndb-icon { font-size: 24px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+  .no-data-banner .ndb-text h3 { font-size: 15px; font-weight: 600; color: var(--green); margin-bottom: 6px; }
+  .no-data-banner .ndb-text p { font-size: 13px; color: var(--text2); line-height: 1.65; }
+
+  .ad-slot {
+    margin: 28px 0; overflow: hidden; text-align: center;
+  }
+  .ad-slot ins { display: block; width: 100%; }
+
+  .toc { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 32px; }
+  .toc-label {
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .toc-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .toc ol { list-style: none; counter-reset: toc; display: flex; flex-direction: column; gap: 6px; }
+  .toc ol li { counter-increment: toc; display: flex; align-items: baseline; gap: 10px; font-size: 13px; }
+  .toc ol li::before { content: counter(toc, decimal-leading-zero); font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); min-width: 20px; }
+  .toc ol li a { color: var(--text2); text-decoration: none; transition: color 0.15s; }
+  .toc ol li a:hover { color: var(--accent); }
+
+  .policy-section { margin-bottom: 40px; scroll-margin-top: 24px; }
+  .policy-section h2 {
+    font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400;
+    color: var(--text); letter-spacing: -0.01em; margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+  .policy-section h3 {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin: 20px 0 10px;
+  }
+  .policy-block { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px 26px; margin-bottom: 12px; }
+  .policy-block p { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 12px; }
+  .policy-block p:last-child { margin-bottom: 0; }
+  .policy-block strong { color: var(--text); font-weight: 500; }
+  .policy-block a { color: var(--accent); text-decoration: none; }
+  .policy-block a:hover { text-decoration: underline; }
+  .policy-block ul { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
+  .policy-block li { font-size: 14px; color: var(--text2); line-height: 1.65; }
+  .policy-block li strong { color: var(--text); }
+
+  .contact-card {
+    background: var(--accent-dim2); border: 1px solid rgba(232,197,71,0.18);
+    border-radius: var(--radius-lg); padding: 22px 26px;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .contact-card-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+  .contact-card-text { flex: 1; min-width: 180px; }
+  .contact-card-text p { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 6px; }
+  .contact-card-text p:last-child { margin-bottom: 0; }
+  .contact-card-text a { color: var(--accent); font-weight: 500; text-decoration: none; }
+  .contact-card-text a:hover { text-decoration: underline; }
+
+  .footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; font-size: 12px; color: var(--text3); }
+  .footer a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-in { animation: fadeUp 0.4s ease forwards; }
+</style>
 </head>
-<body class="text-slate-800 antialiased flex flex-col min-h-screen">
+<body>
+<div class="page">
 
-    <!-- Header Navigation -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="bg-indigo-600 text-white p-2 rounded-xl shadow-md shadow-indigo-100">
-                    <i class="fas fa-graduation-cap text-lg"></i>
-                </div>
-                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r inline-block text-transparent bg-clip-text from-indigo-600 to-violet-600">
-                    KEAM Rank Predictor
-                </span>
-            </div>
-            <nav class="hidden md:flex items-center gap-1 bg-slate-100/80 p-1 rounded-full border border-slate-200">
-                <a href="index.html" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 transition">Predictor</a>
-                <a href="colleges.html" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 transition">Colleges</a>
-                <a href="contact.html" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 transition">Contact</a>
-                <a href="about.html" class="px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:text-slate-900 transition">About Us</a>
-                <a href="privacy.html" class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-indigo-600 shadow-sm border border-slate-200/60 transition">Privacy Policy</a>
-            </nav>
-        </div>
-    </header>
+  <nav style="border-bottom: 1px solid var(--border); background: var(--bg); padding: 15px 20px; margin: 0 -24px 0;">
+    <div style="max-width: 820px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <div style="display:flex; align-items:center;">
+        <img src="logo.png" alt="Logo" style="height: 36px; border-radius: 4px;">
+        <div style="width:1px; height:14px; background:var(--border2); margin:0 12px;"></div>
+        <span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--text3);">Analytical Partner</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Predictor</a>
+        <a href="colleges.html" class="nav-link">Colleges</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="privacy.html" class="nav-link nav-link-active">Privacy Policy</a>
+        <a href="https://distancetoplanets.com" target="_blank" rel="noopener" class="nav-link nav-link-pill">Our Work ↗</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-6 sm:p-10 lg:p-12 prose prose-slate max-w-none">
-            
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Privacy Policy</h1>
-            <p class="text-sm font-medium text-slate-500 mb-8">Last updated: June 22, 2026</p>
-            
-            <p class="text-base text-slate-600 leading-relaxed mb-6">
-                This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
-            </p>
-            <p class="text-base text-slate-600 leading-relaxed mb-8">
-                We use Your Personal Data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.
-            </p>
+  <header class="header animate-in">
+    <div class="header-eyebrow">Legal &amp; Transparency</div>
+    <h1>Privacy <em>Policy</em></h1>
+    <p class="header-sub">What data we collect — and what we don't.</p>
+    <p style="font-size:12px; color:var(--text3); margin-top:6px;">Owned by <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600; text-decoration:none;">GoFinanciallyFit.com</a></p>
+  </header>
 
-            <hr class="border-slate-200 my-8">
+  <div class="updated-badge animate-in" style="animation-delay:0.05s">
+    Last updated: <span>June 22, 2026</span>
+  </div>
 
-            <!-- CRITICAL FOR ADSENSE: Third Party Advertising Clauses -->
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"><i class="fas fa-ad text-indigo-600"></i> Google AdSense & Third-Party Advertising Policy</h2>
-            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5 my-6 text-slate-700 text-sm leading-relaxed space-y-3">
-                <p class="font-semibold text-indigo-950">Please read this section carefully regarding how advertising data is handled:</p>
-                <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Google DART Cookies:</strong> Google is one of the third-party vendors operating on our Service. It uses cookies, known as DART cookies, to serve targeted advertisements to our site visitors based upon their visits to <code class="bg-indigo-100 px-1 rounded text-indigo-800">www.keamrankpredictor.in</code> and other websites across the internet.</li>
-                    <li><strong>Opting Out:</strong> Visitors may choose to decline or disable the use of DART cookies by visiting the Google Ad and Content Network Privacy Policy page at the following URL: <a href="https://policies.google.com/technologies/ads" target="_blank" class="text-indigo-600 font-semibold hover:underline">https://policies.google.com/technologies/ads</a>.</li>
-                    <li><strong>External Ad Partners:</strong> Other third-party ad networks or ad servers may use cookies, JavaScript, or Web Beacons within their respective advertisements displayed on Keam Rank Predictor. These technologies automatically collect your IP address. This data is used to optimize and measure the effectiveness of vendor promotional campaigns and personalize advertising assets.</li>
-                    <li>Keam Rank Predictor has no access to or control over cookies that are used by third-party advertisers.</li>
-                </ul>
-            </div>
+  <!-- Key message: no data collected -->
+  <div class="no-data-banner animate-in" style="animation-delay:0.08s">
+    <div class="ndb-icon">🔒</div>
+    <div class="ndb-text">
+      <h3>We do not collect any personal data</h3>
+      <p>All calculations on this tool run entirely in your browser. No scores, names, contact details, or any other information you enter are transmitted to or stored on our servers. The only third-party data activity on this site comes from Google AdSense (advertising) and Google Analytics (anonymous usage stats), described in full below.</p>
+    </div>
+  </div>
 
-            <hr class="border-slate-200 my-8">
+  <!-- Ad slot: top -->
+  <div class="ad-slot animate-in" style="animation-delay:0.1s">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"><i class="fas fa-book text-indigo-600"></i> Interpretation and Definitions</h2>
-            <h3 class="text-lg font-semibold text-slate-800 mt-4 mb-2">Interpretation</h3>
-            <p class="text-slate-600 mb-4">The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
-            
-            <h3 class="text-lg font-semibold text-slate-800 mt-4 mb-2">Definitions</h3>
-            <p class="text-slate-600 mb-4">For the purposes of this Privacy Policy:</p>
-            <ul class="space-y-3 list-disc pl-5 text-slate-600 mb-8">
-                <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
-                <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</li>
-                <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our") refers to Keam Rank Predictor.</li>
-                <li><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</li>
-                <li><strong>Country</strong> refers to: Kerala, India</li>
-                <li><strong>Device</strong> means any device that can access the Service such as a computer, a cell phone or a digital tablet.</li>
-                <li><strong>Personal Data</strong> (or "Personal Information") is any information that relates to an identified or identifiable individual. We use these terms interchangeably unless a law uses a specific term.</li>
-                <li><strong>Service</strong> refers to the Website.</li>
-                <li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company.</li>
-                <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</li>
-                <li><strong>Website</strong> refers to Keam Rank Predictor, accessible from <a href="https://www.keamrankpredictor.in/" class="text-indigo-600 hover:underline">https://www.keamrankpredictor.in/</a>.</li>
-                <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
-            </ul>
+  <div class="toc animate-in" style="animation-delay:0.12s">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#no-data">No Personal Data Collection</a></li>
+      <li><a href="#how-tool-works">How the Rank Predictor Works</a></li>
+      <li><a href="#google-ads">Google Advertising &amp; Cookies</a></li>
+      <li><a href="#analytics">Google Analytics</a></li>
+      <li><a href="#third-party">Third-Party Links</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to this Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
 
-            <hr class="border-slate-200 my-8">
+  <!-- 1 -->
+  <section class="policy-section animate-in" id="no-data" style="animation-delay:0.14s">
+    <h2>1. No Personal Data Collection</h2>
+    <div class="policy-block">
+      <p>KEAM Rank Predictor does not collect, store, transmit, or share any personally identifiable information from its users. We do not operate user accounts, contact forms, email subscriptions, or any other mechanism that would gather your name, email address, phone number, or academic scores.</p>
+      <p>Any information you type into the rank predictor (normalized score, board marks, category) is used <strong>only within your browser</strong> to compute a result. It is never sent to our servers.</p>
+    </div>
+  </section>
 
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"><i class="fas fa-shield-alt text-indigo-600"></i> Collecting and Using Your Personal Data</h2>
-            <h3 class="text-lg font-semibold text-slate-800 mt-4 mb-2">Types of Data Collected</h3>
-            
-            <h4 class="text-base font-semibold text-slate-700 mt-2 mb-1">Personal Data</h4>
-            <p class="text-slate-600 mb-4">While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to, data points such as engineering stream choice, standardized exam scores, or high school board categories required for calculating custom normalization weights.</p>
+  <!-- 2 -->
+  <section class="policy-section animate-in" id="how-tool-works">
+    <h2>2. How the Rank Predictor Works</h2>
+    <div class="policy-block">
+      <p>The rank predictor is a fully client-side tool. All computation — index score calculation, rank range estimation, college matching — runs in JavaScript inside your own browser tab. When you click "Calculate my rank", no network request is made and no data leaves your device.</p>
+      <p>Closing the browser tab or navigating away permanently discards any values you entered.</p>
+    </div>
+  </section>
 
-            <h4 class="text-base font-semibold text-slate-700 mt-4 mb-1">Usage Data</h4>
-            <p class="text-slate-600 mb-4">Usage Data is collected automatically when using the Service. This may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+  <!-- Ad slot: mid-article -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
-            <h4 class="text-base font-semibold text-slate-700 mt-4 mb-1">Tracking Technologies and Cookies</h4>
-            <p class="text-slate-600 mb-4">We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies We use include beacons, tags, and scripts to collect and track information and to improve and analyze Our Service.</p>
-            
-            <p class="text-slate-600 mb-4">We use both Session and Persistent Cookies for the purposes set out below:</p>
-            <ul class="space-y-4 list-disc pl-5 text-slate-600 mb-8">
-                <li><strong>Necessary / Essential Cookies (Session):</strong> Administered by Us. These Cookies are essential to provide You with services available through the Website.</li>
-                <li><strong>Cookies Policy / Notice Acceptance Cookies (Persistent):</strong> Administered by Us. These Cookies identify if users have accepted the use of cookies on the Website.</li>
-                <li><strong>Functionality Cookies (Persistent):</strong> Administered by Us. These Cookies allow Us to remember choices You make when You use the Website (like remembering parameters).</li>
-            </ul>
+  <!-- 3 Google Ads — required section for AdSense -->
+  <section class="policy-section animate-in" id="google-ads">
+    <h2>3. Google Advertising &amp; Cookies</h2>
+    <div class="policy-block">
+      <p>This website displays advertisements served by <strong>Google AdSense</strong>. Google, as a third-party vendor, uses cookies to serve ads based on your prior visits to this and other websites. We do not control these cookies and have no access to the data they collect.</p>
+      <h3>What Google may collect via ad cookies</h3>
+      <ul>
+        <li>Your IP address and approximate location</li>
+        <li>Browser type, device type, and operating system</li>
+        <li>Pages visited and content interacted with on this and other sites</li>
+        <li>Interest categories inferred from your broader browsing activity</li>
+        <li>Demographic information (if associated with a signed-in Google account)</li>
+      </ul>
+      <h3>Your opt-out options</h3>
+      <ul>
+        <li>Adjust personalised ad preferences at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener nofollow">Google Ads Settings</a></li>
+        <li>Opt out of third-party advertising cookies at <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener nofollow">aboutads.info</a> or the <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener nofollow">Network Advertising Initiative</a></li>
+        <li>Block cookies entirely via your browser settings — the rank predictor will still work fully</li>
+      </ul>
+      <p>Opting out stops personalised ads; you will still see ads but they will not be tailored to your interests. For full details on Google's data practices, see <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener nofollow">policies.google.com/technologies/ads</a>.</p>
+      <h3>Our commitments regarding advertising</h3>
+      <ul>
+        <li>We do not pass any user-entered data to Google's advertising systems</li>
+        <li>We do not use Google ad data to identify individual visitors</li>
+        <li>We do not serve interest-based ads to users identified as under 16</li>
+      </ul>
+    </div>
+  </section>
 
-            <h3 class="text-lg font-semibold text-slate-800 mt-6 mb-2">Use of Your Personal Data</h3>
-            <p class="text-slate-600 mb-4">The Company may use Personal Data for the following purposes:</p>
-            <ul class="list-disc pl-5 space-y-2 text-slate-600 mb-8">
-                <li>To provide, track, and maintain our Service, including monitoring metric calculator workflows.</li>
-                <li>To manage customer requests and map out simulator metrics.</li>
-                <li>For analytical data processing, measuring system server stability, or evaluation of layout iterations.</li>
-            </ul>
+  <!-- 4 Analytics -->
+  <section class="policy-section animate-in" id="analytics">
+    <h2>4. Google Analytics</h2>
+    <div class="policy-block">
+      <p>We may use <strong>Google Analytics</strong> to understand how visitors use the site in aggregate — for example, which pages are most visited, how long sessions last, and where traffic comes from. Google Analytics collects anonymised usage data (IP addresses are truncated before storage) and does not allow us to identify individual users.</p>
+      <p>You can opt out of Google Analytics across all sites by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener nofollow">Google Analytics Opt-out Browser Add-on</a>.</p>
+    </div>
+  </section>
 
-            <h3 class="text-lg font-semibold text-slate-800 mt-6 mb-2">Retention of Your Personal Data</h3>
-            <p class="text-slate-600 mb-4">The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. Website usage logs and standard cookies data are typically retained up to 24 months from the date of collection.</p>
+  <!-- Ad slot: before contact -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
-            <h3 class="text-lg font-semibold text-slate-800 mt-6 mb-2">Security of Your Personal Data</h3>
-            <p class="text-slate-600 mb-4">The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+  <!-- 5 Third-party links -->
+  <section class="policy-section animate-in" id="third-party">
+    <h2>5. Third-Party Links</h2>
+    <div class="policy-block">
+      <p>The Service contains links to external websites (official CEE Kerala portals, college sites, government resources) not operated by us. Clicking those links directs you to the third party's site under their own privacy policy. We have no control over and assume no responsibility for their content or data practices.</p>
+    </div>
+  </section>
 
-            <hr class="border-slate-200 my-8">
+  <!-- 6 Children -->
+  <section class="policy-section animate-in" id="children">
+    <h2>6. Children's Privacy</h2>
+    <div class="policy-block">
+      <p>Because we do not collect any personal data, there is no risk of inadvertently collecting data from children. The rank predictor is designed for KEAM 2026 aspirants (typically 17–18 years old) and their families. No personal information from any user, regardless of age, is stored by us.</p>
+      <p>Google AdSense's age-based ad restrictions still apply — see Section 3 for details.</p>
+    </div>
+  </section>
 
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"><i class="fas fa-server text-indigo-600"></i> Service Providers & Third-Party Processing</h2>
-            <p class="text-slate-600 mb-4">The Service Providers We use have access to Your Personal Data to perform tracking tasks on our behalf and are strictly obligated not to disclose or use it for any other purpose.</p>
-            <ul class="list-disc pl-5 text-slate-600 mb-8">
-                <li><strong>FreshDesk:</strong> Customer ticketing pipeline software managed by Freshworks, Inc. Used to answer optimization questions and rank feedback loops. Their official privacy metrics page can be found at <a href="https://www.freshworks.com/privacy/" target="_blank" class="text-indigo-600 hover:underline">https://www.freshworks.com/privacy/</a>.</li>
-            </ul>
+  <!-- 7 Changes -->
+  <section class="policy-section animate-in" id="changes">
+    <h2>7. Changes to this Policy</h2>
+    <div class="policy-block">
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised "Last updated" date. Because we hold no contact information for users, we cannot notify you directly — please bookmark this page and check back periodically if this matters to you.</p>
+    </div>
+  </section>
 
-            <hr class="border-slate-200 my-8">
+  <!-- 8 Contact -->
+  <section class="policy-section animate-in" id="contact">
+    <h2>8. Contact Us</h2>
+    <div class="contact-card">
+      <div class="contact-card-icon">✉️</div>
+      <div class="contact-card-text">
+        <p>Questions about this Privacy Policy or our data practices?</p>
+        <p>Email us at <a href="mailto:rankkeam@gmail.com">rankkeam@gmail.com</a> — we aim to respond within 5 business days.</p>
+      </div>
+    </div>
+  </section>
 
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"><i class="fas fa-user-shield text-indigo-600"></i> CCPA/GDPR/LGPD Privacy Rights</h2>
-            <p class="text-slate-600 mb-4">Depending on your geographic locality, you have explicit structural data collection controls under international frameworks:</p>
-            <ul class="list-disc pl-5 space-y-2 text-slate-600 mb-8">
-                <li>The right to request disclosure of categories and specific pieces of data collected.</li>
-                <li>The right to request immediate erasure of any personal data harvested by our tracking tools.</li>
-                <li>The right to opt-out entirely from any data transactions or marketing funnels.</li>
-            </ul>
+  <footer class="footer">
+    KEAM 2026 Rank Predictor · Privacy Policy · Last updated June 22, 2026<br>
+    © 2026 <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener">GoFinanciallyFit.com</a>
+  </footer>
 
-            <hr class="border-slate-200 my-8">
-
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"><i class="fas fa-child text-indigo-600"></i> Children's Privacy</h2>
-            <p class="text-slate-600 mb-8">Our Service does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from anyone under the age of 16. If We become aware that We have collected Personal Data from anyone under the age of 16 without verification of parental consent, We take steps to remove that information from Our servers.</p>
-
-            <hr class="border-slate-200 my-8">
-
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"><i class="fas fa-envelope text-indigo-600"></i> Contact Us</h2>
-            <p class="text-slate-600 mb-4">If you have any questions about this Privacy Policy, You can contact us:</p>
-            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl inline-flex items-center gap-3">
-                <i class="fas fa-paper-plane text-indigo-600 text-lg"></i>
-                <span class="font-semibold text-slate-700">rankkeam@gmail.com</span>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
-            <p class="mb-2">&copy; 2026 KEAM Rank Predictor. All rights reserved.</p>
-            <p>Disclaimer: This prediction platform is built solely for educational evaluation and structural analytics. It is not affiliated with the Commissioner for Entrance Examinations (CEE), Kerala.</p>
-        </div>
-    </footer>
-
+</div>
 </body>
 </html>
-
-```

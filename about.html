@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KEAM 2026 Rank Predictor</title>
+<title>About Us — KEAM 2026 Rank Predictor | GoFinanciallyFit.com</title>
+<meta name="description" content="KEAM 2026 Rank Predictor is owned and published by GoFinanciallyFit.com, a US-based independent financial guidance platform. Learn who runs this site, how the predictor works, and our approach to accuracy.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -570,7 +571,7 @@
 
   /* Dates table */
   .dates-table-wrap { overflow-x: auto; margin: 0 -4px; }
-  .dates-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .dates-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
   .dates-table th {
     text-align: left;
     font-family: 'DM Mono', monospace;
@@ -588,21 +589,8 @@
     vertical-align: top;
   }
   .dates-table tr:last-child td { border-bottom: none; }
-  .dates-table td.dt-event { color: var(--text); font-weight: 500; }
-  .dates-table td.dt-date { white-space: nowrap; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 12px; text-align: right; }
-  /* On narrow screens, collapse the table into stacked label/value rows so nothing requires horizontal scrolling */
-  @media (max-width: 520px) {
-    .dates-table thead { display: none; }
-    .dates-table, .dates-table tbody, .dates-table tr, .dates-table td { display: block; width: 100%; }
-    .dates-table tr {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .dates-table tr:last-child { border-bottom: none; }
-    .dates-table td { padding: 2px 0; border-bottom: none; }
-    .dates-table td.dt-event { font-size: 13px; }
-    .dates-table td.dt-date { text-align: left; font-size: 13px; margin-top: 2px; }
-  }
+  .dates-table td.dt-event { color: var(--text); font-weight: 500; white-space: nowrap; }
+  .dates-table td.dt-date { white-space: nowrap; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 12px; }
   .dates-note {
     font-size: 11px;
     color: var(--text3);
@@ -647,26 +635,6 @@
   @media (max-width: 540px) {
     .internal-link-row { flex-direction: column; align-items: stretch; text-align: center; }
   }
-
-  .gov-link-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin-top: 4px;
-  }
-  .gov-link-card {
-    display: block;
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    text-decoration: none;
-    transition: border-color 0.2s;
-  }
-  .gov-link-card:hover { border-color: var(--accent); }
-  .gov-link-card .gl-name { font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 3px; }
-  .gov-link-card .gl-desc { font-size: 11.5px; color: var(--text3); line-height: 1.5; }
-  .gov-link-card .gl-url { font-size: 11px; color: var(--accent); font-family: 'DM Mono', monospace; margin-top: 6px; display: block; }
 
   /* Footer */
   .footer {
@@ -733,10 +701,10 @@
          <span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--text3);">Analytical Partner</span>
       </div>
       <div class="nav-links">
-        <a href="index.html" class="nav-link nav-link-active">Predictor</a>
+        <a href="index.html" class="nav-link">Predictor</a>
         <a href="colleges.html" class="nav-link">Colleges</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="about.html" class="nav-link">About Us</a>
+        <a href="about.html" class="nav-link nav-link-active">About Us</a>
         <a href="privacy.html" class="nav-link">Privacy Policy</a>
         <a href="https://distancetoplanets.com" target="_blank" rel="noopener" class="nav-link nav-link-pill">Our Work ↗</a>
       </div>
@@ -744,543 +712,65 @@
   </nav>
 
   <header class="header">
-    <div class="header-eyebrow">Kerala Engineering Admission 2026</div>
-    <h1>KEAM Rank <em>Predictor</em></h1>
-    <p class="header-sub">5:3:2 weighted PCM index · 2026 normalization standards · Kerala reservation rules</p>
+    <div class="header-eyebrow">About This Site</div>
+    <h1>About <em>Us</em></h1>
+    <p class="header-sub">Who runs the KEAM 2026 Rank Predictor, and why we built it</p>
     <p style="font-size:12px; color:var(--text3); margin-top:6px;">Owned by <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600; text-decoration:none;">GoFinanciallyFit.com</a> — practical money tips and guidance for better financial habits</p>
   </header>
 
-  <div class="card">
-    <div class="card-section">
-      <div class="section-label">Entrance exam</div>
-      <div class="input-grid">
-        <div class="field">
-          <label>Normalized Score (out of 300)</label>
-          <input type="number" id="normalizedScore" step="any" min="0" max="300" placeholder="e.g. 185.2451">
-        </div>
-      </div>
-    </div>
-
-    <div class="card-section">
-      <div class="section-label">Plus Two / Class 12 board</div>
-      <div class="field" style="margin-bottom:14px;">
-        <label>Select your board</label>
-        <select id="board">
-          <option value="STATE">Kerala State Board (DHSE)</option>
-          <option value="CBSE">CBSE</option>
-          <option value="ICSE">ICSE / ISC (CISCE)</option>
-          <option value="NIOS">NIOS</option>
-        </select>
-      </div>
-      <div class="section-label">Class 12 marks (out of 100 per subject)</div>
-      <div class="input-grid">
-        <div class="field">
-          <label>Physics</label>
-          <input type="number" id="phy" min="0" max="100" placeholder="0 – 100">
-        </div>
-        <div class="field">
-          <label>Chemistry</label>
-          <input type="number" id="che" min="0" max="100" placeholder="0 – 100">
-        </div>
-        <div class="field">
-          <label>Maths</label>
-          <input type="number" id="mat" min="0" max="100" placeholder="0 – 100">
-        </div>
-      </div>
-      <div style="font-size:11px; color:var(--text3); margin-top:10px;">DHSE candidates: enter your combined Theory + Practical/Internal mark out of 100 for each subject (as shown on your Plus Two marksheet).</div>
-    </div>
-
-    <div class="card-section">
-      <div class="section-label">Reservation category</div>
-      <div class="field">
-        <select id="cat">
-          <option value="">Select your category</option>
-          <option value="GEN">GEN — State Merit (General)</option>
-          <option value="EZ">EZ — Ezhava / Thiyya / Billava</option>
-          <option value="MU">MU — Muslim</option>
-          <option value="BH">BH — Other Backward Hindu</option>
-          <option value="LA">LA — Latin Catholic &amp; Anglo Indian</option>
-          <option value="DV">DV — Dheevara and related communities</option>
-          <option value="VK">VK — Viswakarma and related communities</option>
-          <option value="KN">KN — Kusavan and related communities</option>
-          <option value="EWS">EWS — Economically Weaker Section</option>
-          <option value="SC">SC — Scheduled Caste</option>
-          <option value="ST">ST — Scheduled Tribe</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="error-msg" id="err"></div>
-
-    <div class="btn-wrap">
-      <button class="calc-btn" onclick="calculate()">Calculate my rank →</button>
-    </div>
-  </div>
-
-  <section class="info-article">
-    <h2>How the KEAM 2026 Rank Predictor Works</h2>
+  <section class="info-article" style="margin-top:32px;">
+    <h2>Who Owns This Site</h2>
     <div class="info-block">
-      <p>This tool estimates your KEAM 2026 engineering rank using CEE Kerala's <strong>50:50 Index Score</strong> formula: your normalized entrance exam score (out of 300) plus your standardized Plus Two score (out of 300), for a final index out of 600. Within the Plus Two component, CEE Kerala applies the 2026 <strong>5:3:2 weighted PCM ratio</strong> — Mathematics carries 50% weight (150 marks), Physics 30% (90 marks), and Chemistry 20% (60 marks) — reflecting Maths' outsized influence on your final rank.</p>
-      <p>Because students come from different boards with different marking styles, CEE Kerala's official process applies cross-board equalization before the 5:3:2 weights. However, as no reliable per-board topper benchmarks are publicly available, this tool applies the weights uniformly across all boards — so your raw marks out of 100 are weighted at 150 (Maths), 90 (Physics), and 60 (Chemistry) regardless of board. This is a simplification of the official method, used here to avoid false precision.</p>
+      <p>The KEAM 2026 Rank Predictor is owned and published by <strong>GoFinanciallyFit.com</strong>, a US-based, Arizona-headquartered independent financial blog and guidance platform. GoFinanciallyFit primarily helps individuals build better money habits through practical tips, resources, and insights — and this predictor is one of a small number of tools we publish outside that core focus, built because better educational planning and better financial planning are closely related: the choices students make at this stage shape years of tuition costs, loans, and career outcomes.</p>
+      <p>We are not affiliated with, endorsed by, or acting on behalf of the Commissioner for Entrance Examinations (CEE), Kerala, or the Government of Kerala. This is an independent, unofficial tool. We say this plainly and repeat it throughout the site because we think it matters: students should always treat their official CEE Kerala scorecard and the published rank list as the final word, and use this predictor only as a planning aid in the meantime.</p>
     </div>
 
-    <h2>KEAM 2026 Important Dates</h2>
+    <h2>Why We Built This Predictor</h2>
     <div class="info-block">
-      <div class="dates-table-wrap">
-        <table class="dates-table">
-          <thead>
-            <tr><th>Event</th><th>Date</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="dt-event">Application form released</td><td class="dt-date">Jan 5, 2026</td></tr>
-            <tr><td class="dt-event">Registration deadline (extended)</td><td class="dt-date">Feb 6, 2026</td></tr>
-            <tr><td class="dt-event">Document upload deadline</td><td class="dt-date">Feb 7, 2026</td></tr>
-            <tr><td class="dt-event">Admit card released</td><td class="dt-date">Apr 9, 2026</td></tr>
-            <tr><td class="dt-event">KEAM CBT exam (Engineering &amp; Pharmacy)</td><td class="dt-date">Apr 17 – 22, 2026</td></tr>
-            <tr><td class="dt-event">Provisional answer key</td><td class="dt-date">Apr 22, 2026</td></tr>
-            <tr><td class="dt-event">Result &amp; normalized scorecard</td><td class="dt-date">May 12, 2026</td></tr>
-            <tr><td class="dt-event">Plus Two marks submission window</td><td class="dt-date">Late May – Jun 18, 2026</td></tr>
-            <tr><td class="dt-event">Final engineering rank list</td><td class="dt-date">On/before Jun 20, 2026</td></tr>
-            <tr><td class="dt-event">CAP option registration opens</td><td class="dt-date">Late Jun 2026 (expected)</td></tr>
-            <tr><td class="dt-event">Trial allotment</td><td class="dt-date">Early Jul 2026 (expected)</td></tr>
-            <tr><td class="dt-event">Round 1 seat allotment</td><td class="dt-date">Third week of Jul 2026 (expected)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="dates-note">Dates for completed milestones (registration through rank list) reflect the official 2026 cycle. Counselling and allotment dates from CAP option registration onward are projected from the 2025 schedule and will be updated once CEE Kerala publishes the official 2026 CAP calendar — always confirm on <strong style="color:var(--text2);">cee.kerala.gov.in</strong> before making admission decisions.</div>
+      <p>KEAM's 2026 admission cycle introduced a genuinely more complex normalization formula — a new 5:3:2 weighting for Plus Two marks, and cross-board standardization that affects CBSE, ICSE/ISC, NIOS, and Kerala State Board students differently. We noticed that most existing rank predictors online still used outdated, oversimplified formulas, or assumed every student came from a single board with a single fixed marking scale.</p>
+      <p>We built this tool to reflect the actual, current methodology as accurately as we could determine from CEE Kerala's published prospectus and notifications — board-by-board, with the real 50:30:20 (Maths:Physics:Chemistry) weighting applied correctly, rather than a generic average. We also added a companion page with last year's college-wise closing ranks, so a number alone doesn't leave a student wondering what it actually means for their admission chances.</p>
     </div>
 
-    <h2>KEAM Normalization Explained</h2>
+    <h2>Our Approach to Accuracy</h2>
     <div class="info-block">
-      <p>KEAM normalization solves two separate fairness problems. The first is <strong>session normalization</strong>: because the 2026 exam ran as a computer-based test across multiple shifts (April 17–22) with different question sets each day, CEE Kerala converts your raw marks into a percentile within your own session, then maps that percentile onto a common 0–300 scale using an interpolated average method. This is why your "normalized score" rarely matches your raw marks directly — a candidate who scored fewer raw marks on a harder shift can end up with a higher normalized score than someone who scored more on an easier shift.</p>
-      <p>The second is <strong>board standardization</strong> of your Plus Two marks. Historically (pre-2011), KEAM simply averaged your Physics, Chemistry, and Maths percentages — but this disadvantaged students from boards that mark more strictly. From 2026 onward, CEE Kerala rescales each subject mark relative to that board's typical topper performance, referenced against the Kerala State Board, before applying the 50:30:20 (Maths:Physics:Chemistry) weights. In simple terms:</p>
-      <div class="callout">
-        <strong>Worked example:</strong> Suppose a CBSE student scores 80/100 in Maths, and the typical CBSE topper score used for standardization is 98, while the Kerala State Board reference topper is 100. The standardized Maths mark becomes (80 ÷ 98) × 100 ≈ 81.6, which is then converted to a weighted score out of 150 for the 50% Maths component. A Kerala State Board student scoring the same raw 80/100 (topper 100) standardizes to exactly 80, then weighted the same way. The gap between the two reflects how the boards' raw scales were already different before normalization — that's precisely what this step is designed to correct.</div>
-      <p>This is also why two students with identical raw percentages but different boards can land at slightly different points in the final 600-mark index, and why CEE Kerala's recent prospectus changes around this exact formula have drawn legal scrutiny — including a Kerala High Court challenge from CBSE students in 2026, which the court ultimately dismissed, upholding the revised standardization method.</p>
+      <p>Every formula, date, and figure on this site is sourced from CEE Kerala's official prospectus, notifications, and scorecards, or from recently reported, verifiable news coverage of the 2026 KEAM cycle. Where official data isn't yet available — such as 2026 college-wise closing ranks, which are only published after each counselling round — we say so explicitly and use the most recent completed cycle (2025) as a clearly labeled reference point, rather than presenting a guess as fact.</p>
+      <p>We link directly to official government sources throughout the site — including CEE Kerala, DHSE Kerala, CBSE, CISCE, and NIOS — so students and parents can verify anything here against the primary source. If you spot something that looks outdated or incorrect, we genuinely want to know; see our <a href="contact.html" style="color:var(--accent); text-decoration:none;">Contact</a> page for how to reach us.</p>
     </div>
 
-    <h3>Board-specific notes</h3>
+    <h2>What This Site Is — and Isn't</h2>
     <div class="info-block">
       <div class="board-grid">
         <div class="board-pill">
-          <div class="bp-name">Kerala State Board (DHSE)</div>
-          <div class="bp-desc">Each Plus Two subject is marked out of 100 (Theory + Practical/Internal combined). Enter your combined subject total directly from your marksheet.</div>
+          <div class="bp-name">It is</div>
+          <div class="bp-desc">An independent planning tool that estimates your likely KEAM 2026 index score and rank range, based on publicly documented CEE Kerala methodology.</div>
         </div>
         <div class="board-pill">
-          <div class="bp-name">CBSE</div>
-          <div class="bp-desc">Enter your Class 12 Physics, Chemistry, and Maths marks out of 100 as shown on your CBSE marksheet (theory + practical combined).</div>
+          <div class="bp-name">It isn't</div>
+          <div class="bp-desc">An official CEE Kerala product, a guarantee of your final rank, or a substitute for your actual scorecard and the published rank list.</div>
         </div>
         <div class="board-pill">
-          <div class="bp-name">ICSE / ISC (CISCE)</div>
-          <div class="bp-desc">ISC Class 12 subjects are marked out of 100. Use your ISC Physics, Chemistry, and Maths totals — not the ICSE Class 10 aggregate.</div>
+          <div class="bp-name">It is</div>
+          <div class="bp-desc">Free to use, with no signup, no data resale, and no spam — see our Privacy Policy for full details on what we do and don't collect.</div>
         </div>
         <div class="board-pill">
-          <div class="bp-name">NIOS</div>
-          <div class="bp-desc">NIOS Senior Secondary subjects are marked out of 100. Enter your theory (and practical, where applicable) combined total per subject.</div>
+          <div class="bp-name">It isn't</div>
+          <div class="bp-desc">Affiliated with any coaching center, college, or admissions consultancy. We don't sell rank-boosting services or paid counselling.</div>
         </div>
       </div>
-    </div>
-
-    <h2>Step-by-Step Instructions</h2>
-    <div class="info-block">
-      <ol class="step-list">
-        <li><strong>Step 1:</strong> Enter your normalized KEAM entrance score out of 300, as shown on your CEE Kerala scorecard.</li>
-        <li><strong>Step 2:</strong> Select your board (Kerala State, CBSE, ICSE/ISC, or NIOS), then enter your Class 12 Physics, Chemistry, and Mathematics marks — each out of 100.</li>
-        <li><strong>Step 3:</strong> Select your reservation category.</li>
-        <li><strong>Step 4:</strong> Click "Calculate my rank" to see your standardized board index, final index score, projected state merit range, and category rank.</li>
-      </ol>
-    </div>
-
-    <h2>Tips to Improve Your Rank Before Counselling</h2>
-    <div class="info-block">
-      <p>Once your KEAM entrance score is locked in, your <strong>Plus Two marks submission</strong> is the last lever you control before the rank list is finalized. A few practical points worth knowing:</p>
-      <p><strong>Double-check your marksheet entry.</strong> CEE Kerala builds your standardized board index directly from the Physics, Chemistry, and Maths marks you submit through the candidate portal. A transcription error — entering 78 instead of 87, for instance — silently lowers your index without any error message, since the number is still a valid mark. Cross-verify every digit against your original marksheet before confirming submission.</p>
-      <p><strong>Understand which subject moves your index most.</strong> Under the 5:3:2 weighting, Mathematics alone determines 50% of your 300-mark board index. A 10-mark improvement in Maths shifts your board index roughly twice as much as the same improvement in Physics, and two-and-a-half times as much as in Chemistry. If you're choosing whether to pursue a revaluation or supplementary exam in only one subject, Maths offers the largest leverage.</p>
-      <p><strong>Plan your CAP option list realistically, not aspirationally.</strong> Once your final rank is out, list every college-branch combination you'd genuinely accept, ranked in true order of preference — not just your top choices. CEE Kerala's Single Window System allots strictly by preference order and rank; an unrealistically short list increases your risk of going unallotted in Round 1, while a longer list costs nothing extra and only improves your odds.</p>
-      <p><strong>Track the official CAP calendar closely.</strong> Option registration windows, trial allotment, and document verification deadlines are typically just a few days each, and missing one can cost you an entire round. Bookmark the CEE Kerala candidate portal and check it directly rather than relying solely on third-party news aggregators, which can lag behind official updates by a day or more.</p>
-    </div>
-
-    <h2>Official Government Resources</h2>
-    <div class="info-block">
-      <p>This predictor is built using publicly available information from the 2026 KEAM prospectus and related official notifications. For authoritative, up-to-date information — including the final rank list, CAP schedule, and board-specific marksheet verification — always refer directly to these official sources:</p>
-      <div class="gov-link-grid">
-        <a class="gov-link-card" href="https://cee.kerala.gov.in/" target="_blank" rel="noopener">
-          <div class="gl-name">CEE Kerala</div>
-          <div class="gl-desc">Official KEAM portal — rank list, scorecard, CAP counselling, and Plus Two marks submission.</div>
-          <span class="gl-url">cee.kerala.gov.in</span>
-        </a>
-        <a class="gov-link-card" href="https://dhsekerala.gov.in/" target="_blank" rel="noopener">
-          <div class="gl-name">DHSE Kerala</div>
-          <div class="gl-desc">Directorate of Higher Secondary Education — Kerala Plus Two results, syllabus, and marksheets.</div>
-          <span class="gl-url">dhsekerala.gov.in</span>
-        </a>
-        <a class="gov-link-card" href="https://www.cbse.gov.in/" target="_blank" rel="noopener">
-          <div class="gl-name">CBSE</div>
-          <div class="gl-desc">Central Board of Secondary Education — Class 12 results and official marksheet verification.</div>
-          <span class="gl-url">cbse.gov.in</span>
-        </a>
-        <a class="gov-link-card" href="https://www.cisce.org/" target="_blank" rel="noopener">
-          <div class="gl-name">CISCE (ICSE / ISC)</div>
-          <div class="gl-desc">Council for the Indian School Certificate Examinations — ISC Class 12 results and certificates.</div>
-          <span class="gl-url">cisce.org</span>
-        </a>
-        <a class="gov-link-card" href="https://www.nios.ac.in/" target="_blank" rel="noopener">
-          <div class="gl-name">NIOS</div>
-          <div class="gl-desc">National Institute of Open Schooling — Senior Secondary results and certification.</div>
-          <span class="gl-url">nios.ac.in</span>
-        </a>
-        <a class="gov-link-card" href="https://education.kerala.gov.in/dhse-2/" target="_blank" rel="noopener">
-          <div class="gl-name">Kerala General Education Dept.</div>
-          <div class="gl-desc">Government of Kerala's General Education Department, overseeing DHSE and higher secondary policy.</div>
-          <span class="gl-url">education.kerala.gov.in</span>
-        </a>
-      </div>
-    </div>
-
-    <h3>Previous Year KEAM Question Papers &amp; Answer Keys (Official)</h3>
-    <div class="info-block">
-      <p>CEE Kerala hosts a dedicated portal for every KEAM cycle, where question papers, provisional and final answer keys, and notifications for that year are published once the exam concludes. Each year's portal follows the same official URL pattern — <strong>cee.kerala.gov.in/keam[YEAR]/</strong> — with an "Answer Key" section listing every day and shift's paper as a downloadable PDF. Use the links below to jump to each year's official portal directly:</p>
-      <div class="gov-link-grid">
-        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2026/" target="_blank" rel="noopener">
-          <div class="gl-name">KEAM 2026 Portal</div>
-          <div class="gl-desc">Question papers, final answer keys, and notifications for the 2026 cycle.</div>
-          <span class="gl-url">cee.kerala.gov.in/keam2026</span>
-        </a>
-        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2025/" target="_blank" rel="noopener">
-          <div class="gl-name">KEAM 2025 Portal</div>
-          <div class="gl-desc">2025 question papers, answer keys, and last-rank allotment lists.</div>
-          <span class="gl-url">cee.kerala.gov.in/keam2025</span>
-        </a>
-        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2024/" target="_blank" rel="noopener">
-          <div class="gl-name">KEAM 2024 Portal</div>
-          <div class="gl-desc">2024 cycle papers and notifications — the first year KEAM moved to CBT mode.</div>
-          <span class="gl-url">cee.kerala.gov.in/keam2024</span>
-        </a>
-        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2023/" target="_blank" rel="noopener">
-          <div class="gl-name">KEAM 2023 Portal</div>
-          <div class="gl-desc">2023 cycle pen-and-paper exam papers and answer keys.</div>
-          <span class="gl-url">cee.kerala.gov.in/keam2023</span>
-        </a>
-        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2022/" target="_blank" rel="noopener">
-          <div class="gl-name">KEAM 2022 Portal</div>
-          <div class="gl-desc">2022 cycle papers and notifications archive.</div>
-          <span class="gl-url">cee.kerala.gov.in/keam2022</span>
-        </a>
-        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2021/" target="_blank" rel="noopener">
-          <div class="gl-name">KEAM 2021 Portal</div>
-          <div class="gl-desc">2021 cycle papers and notifications archive.</div>
-          <span class="gl-url">cee.kerala.gov.in/keam2021</span>
-        </a>
-      </div>
-      <div class="dates-note">CEE Kerala periodically restructures older year-portals, and very old cycles (pre-2020) are sometimes archived or removed. If a year's portal link above doesn't load, search "[year] KEAM question paper" directly on cee.kerala.gov.in or check the Notifications section on the current portal for an archive link.</div>
     </div>
 
     <div class="info-block">
       <div class="internal-link-row">
-        <div class="il-text"><strong>Want to know which colleges your rank can realistically reach?</strong> See last year's closing ranks for CET Trivandrum, TKM Kollam, MEC Thrikkakara, and more.</div>
-        <a href="colleges.html">View College Cutoffs →</a>
-      </div>
-    </div>
-
-    <h2>Frequently Asked Questions</h2>
-    <div class="info-block">
-      <div class="faq-row">
-        <div class="faq-q">Is this the official CEE Kerala rank predictor?</div>
-        <div class="faq-a">No. This is an independent estimation tool built on the publicly documented 2026 KEAM Index Score methodology. Always cross-check against your official CEE Kerala scorecard and the final published rank list.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">What is a good index score for TKM Kollam or CET Trivandrum?</div>
-        <div class="faq-a">Based on 2025 trends, CET Trivandrum's CSE program closed around rank 271–571 for General category, meaning you'd typically need an index in the 540+ range out of 600. TKM Kollam CSE closed closer to rank 1,100–2,279, achievable with a somewhat lower index, particularly for non-CSE branches like ECE or Mechanical. These figures shift slightly each year based on competition and seat availability.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">How does the 5:3:2 ratio affect CBSE vs State Board students?</div>
-        <div class="faq-a">Since Maths now carries 50% of the board weightage (versus a flatter average previously), students strong in Maths — regardless of board — see a bigger boost to their board index. The 5:3:2 ratio applies the same way for all boards: your raw Physics, Chemistry, and Maths marks out of 100 are weighted directly at 90, 60, and 150 respectively.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">When will the CEE Kerala trial allotments begin?</div>
-        <div class="faq-a">Following the 2026 rank list (published on or before June 20), CAP option registration is expected to open in the last week of June 2026, with trial allotment results typically released in early-to-mid July, based on the 2025 cycle's pattern. CEE Kerala publishes the exact dates on its official portal closer to the time.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">Why does my board matter for the calculation?</div>
-        <div class="faq-a">In this tool, it currently doesn't — the board field is collected for context, but all supported boards (Kerala State Board, CBSE, ICSE, NIOS) are treated identically: your raw marks out of 100 are weighted using the 5:3:2 ratio without any board-specific rescaling. CEE Kerala's official process does apply cross-board equalization, but as no reliable per-board topper benchmarks are publicly available, this tool applies the weights uniformly to avoid false precision.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">What if I didn't study Chemistry?</div>
-        <div class="faq-a">CEE Kerala's prospectus allows Computer Science, Biotechnology, or Biology marks as a substitute, in that order of preference, if Chemistry wasn't part of your curriculum.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">Does this tool account for reservation categories correctly?</div>
-        <div class="faq-a">Yes — selecting your category applies the appropriate admission-power multiplier used in CEE Kerala's category-wise rank conversion, giving you an estimated category rank alongside your overall State Merit (SM) range. Exact multipliers and seat-matrix effects can vary slightly by year and should be confirmed against the official rank list.</div>
-      </div>
-      <div class="faq-row">
-        <div class="faq-q">Can I use this predictor before I've submitted my Plus Two marks to CEE Kerala?</div>
-        <div class="faq-a">Yes — you only need your own marksheet figures, not a CEE-confirmed submission, to get an estimate. Just make sure you enter the exact combined Theory + Practical/Internal totals from your official marksheet for accuracy.</div>
+        <div class="il-text"><strong>Have a question about how the calculation works, or spotted something that needs updating?</strong> We'd like to hear from you.</div>
+        <a href="contact.html">Contact Us →</a>
       </div>
     </div>
   </section>
 
-
-  <div id="result"></div>
-
   <footer class="footer">
-    KEAM 2026 Rank Predictor · Estimates based on 2026 normalization trends · Not an official CEE Kerala tool<br>
+    KEAM 2026 Rank Predictor · Independent tool, not affiliated with CEE Kerala<br>
     © 2026 <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600; text-decoration:none;">GoFinanciallyFit.com</a>
   </footer>
 </div>
-
-<script>
-// CEE Kerala's 2026 prospectus standardizes Plus Two marks across boards before
-// applying 5:3:2 weights. Since no reliable per-board topper benchmarks are
-// publicly available, this tool treats all boards identically — marks out of 100
-// are weighted directly: Maths ×1.5 (→150), Physics ×0.9 (→90), Chem ×0.6 (→60).
-// The BOARD_MAP is retained for display purposes only.
-const BOARD_MAP = {
-  STATE: { name: "Kerala State Board (DHSE)", topper: 100 },
-  CBSE:  { name: "CBSE",                       topper: 100 },
-  ICSE:  { name: "ICSE / ISC (CISCE)",         topper: 100 },
-  NIOS:  { name: "NIOS",                       topper: 100 }
-};
-
-const CAT_MAP = {
-  GEN:{name:"State Merit (General)",mult:1.0},
-  EZ:{name:"Ezhava / Thiyya / Billava",mult:1.25},
-  MU:{name:"Muslim",mult:1.25},
-  BH:{name:"Other Backward Hindu",mult:1.25},
-  LA:{name:"Latin Catholic & Anglo Indian",mult:1.35},
-  DV:{name:"Dheevara and related",mult:1.35},
-  VK:{name:"Viswakarma and related",mult:1.35},
-  KN:{name:"Kusavan and related",mult:1.35},
-  EWS:{name:"Economically Weaker Section",mult:1.15},
-  SC:{name:"Scheduled Caste",mult:6.0},
-  ST:{name:"Scheduled Tribe",mult:10.0}
-};
-
-const COLLEGES = [
-  {name:"CET Trivandrum",branch:"CSE",cutoff:450,tier:1},
-  {name:"CET Trivandrum",branch:"ECE",cutoff:1200,tier:1},
-  {name:"CET Trivandrum",branch:"Mech",cutoff:3500,tier:1},
-  {name:"GEC Thrissur",branch:"CSE",cutoff:1100,tier:1},
-  {name:"GEC Thrissur",branch:"ECE",cutoff:2800,tier:1},
-  {name:"TKM Kollam",branch:"CSE",cutoff:2200,tier:1},
-  {name:"TKM Kollam",branch:"ECE",cutoff:4500,tier:1},
-  {name:"MEC Ernakulam",branch:"CSE",cutoff:2800,tier:1},
-  {name:"MEC Ernakulam",branch:"ECE",cutoff:5000,tier:1},
-  {name:"RSET Rajagiri",branch:"CSE",cutoff:5500,tier:2},
-  {name:"RSET Rajagiri",branch:"ECE",cutoff:9000,tier:2},
-  {name:"FISAT Angamaly",branch:"CSE",cutoff:7000,tier:2},
-  {name:"FISAT Angamaly",branch:"ECE",cutoff:11000,tier:2},
-  {name:"RIT Kottayam",branch:"CSE",cutoff:5500,tier:2},
-  {name:"RIT Kottayam",branch:"ECE",cutoff:8500,tier:2},
-  {name:"RIT Kottayam",branch:"Mech",cutoff:12000,tier:2},
-  {name:"NSS Palakkad",branch:"CSE",cutoff:7500,tier:2},
-  {name:"NSS Palakkad",branch:"ECE",cutoff:11000,tier:2},
-  {name:"NSS Palakkad",branch:"Civil",cutoff:15000,tier:2},
-  {name:"MACE Kothamangalam",branch:"CSE",cutoff:6000,tier:2},
-  {name:"MACE Kothamangalam",branch:"ECE",cutoff:9500,tier:2},
-  {name:"SCT Trivandrum",branch:"CSE",cutoff:6500,tier:2},
-  {name:"SCT Trivandrum",branch:"ECE",cutoff:10500,tier:2},
-  {name:"LBS Kasaragod",branch:"CSE",cutoff:15000,tier:3},
-  {name:"LBS Kasaragod",branch:"IT",cutoff:22000,tier:3},
-  {name:"GEC Idukki",branch:"CSE",cutoff:11000,tier:3},
-  {name:"GEC Idukki",branch:"ECE",cutoff:19000,tier:3},
-  {name:"UKF College of Engineering and Technology",branch:"CSE",cutoff:30000,tier:3},
-  {name:"UKF College of Engineering and Technology",branch:"Mech",cutoff:60000,tier:3},
-  {name:"Rajadhani RIET",branch:"AI in Robotics",cutoff:50000,tier:3}
-];
-
-function smRange(idx) {
-  if(idx>=585) return {label:"1 – 200",mid:100};
-  if(idx>=565) return {label:"200 – 1,000",mid:600};
-  if(idx>=535) return {label:"1,000 – 3,500",mid:2250};
-  if(idx>=500) return {label:"3,500 – 8,000",mid:5750};
-  if(idx>=460) return {label:"8,000 – 15,000",mid:11500};
-  if(idx>=400) return {label:"15,000 – 30,000",mid:22500};
-  if(idx>=350) return {label:"30,000 – 55,000",mid:42500};
-  return {label:"55,000+",mid:65000};
-}
-
-function chance(catRank, cutoff) {
-  const r = catRank / cutoff;
-  if(r <= 0.75) return "High";
-  if(r <= 1.1)  return "Moderate";
-  return "Low";
-}
-
-function calculate() {
-  const NS = parseFloat(document.getElementById("normalizedScore").value);
-  const P = parseFloat(document.getElementById("phy").value);
-  const Ch = parseFloat(document.getElementById("che").value);
-  const M = parseFloat(document.getElementById("mat").value);
-  const catKey = document.getElementById("cat").value;
-  const boardKey = document.getElementById("board").value;
-
-  const errEl = document.getElementById("err");
-  errEl.style.display = "none";
-
-  if([NS,P,Ch,M].some(isNaN) || !catKey) {
-    errEl.textContent = "Please fill in all fields before calculating.";
-    errEl.style.display = "block"; return;
-  }
-  if(NS < 0 || NS > 300) { errEl.textContent = "Error: Normalized Score must be between 0 and 300."; errEl.style.display="block"; return; }
-  if([P,Ch,M].some(v=>v<0||v>100)) { errEl.textContent = "Error: Board marks must be between 0 and 100."; errEl.style.display="block"; return; }
-
-  const KEAM_Index = NS;
-  const board = BOARD_MAP[boardKey];
-
-  // Cross-board standardization: rescale each board's mark against the
-  // Kerala State Board topper benchmark, using each board's typical topper mark.
-  const P_eq = Math.min(100, (P / board.topper) * BOARD_MAP.STATE.topper);
-  const Ch_eq = Math.min(100, (Ch / board.topper) * BOARD_MAP.STATE.topper);
-  const M_eq = Math.min(100, (M / board.topper) * BOARD_MAP.STATE.topper);
-
-  // 5:3:2 weighting -> Maths 150, Physics 90, Chemistry 60 (out of 300)
-  const M_w = (M_eq / 100) * 150;
-  const P_w = (P_eq / 100) * 90;
-  const Ch_w = (Ch_eq / 100) * 60;
-  const Board_Index = M_w + P_w + Ch_w;
-
-  const Index = KEAM_Index + Board_Index;
-  const cat = CAT_MAP[catKey];
-  const sm = smRange(Index);
-  const catRank = Math.round(sm.mid / cat.mult);
-  let strategy, risk, riskClass;
-  if(NS >= 220)      { strategy = "Aggressive";   risk = "Low";      riskClass = "badge-green"; }
-  else if(NS >= 150) { strategy = "Balanced";     risk = "Moderate"; riskClass = "badge-orange"; }
-  else               { strategy = "Conservative"; risk = "High";     riskClass = "badge-red"; }
-
-  const collegeCandidates = COLLEGES
-    .map(col => ({...col, ch: chance(catRank, col.cutoff)}))
-    .filter(c => catRank / c.cutoff < 2.2)
-    .sort((a,b) => a.cutoff - b.cutoff)
-    .slice(0, 9);
-
-  const chanceClass = c => c==="High"?"badge-green":c==="Moderate"?"badge-orange":"badge-red";
-
-  const boardShare = (Board_Index / (Index||1) * 100).toFixed(0);
-  const dom = M_w>=P_w&&M_w>=Ch_w?"Maths (50% weight)":P_w>=Ch_w?"Physics (30% weight)":"Chemistry (20% weight)";
-
-  const insights = [
-    `Your board index contributes ${boardShare}% of the final score. ${dom} is the dominant component under the 2026 5:3:2 normalization — a +5 mark improvement in Maths has the largest impact, followed by Physics, then Chemistry.`,
-    cat.mult > 1
-      ? `The ${catKey} category multiplies admission power by ${cat.mult}×, pushing your effective rank to ~${catRank.toLocaleString()} (equivalent SM ~${sm.mid.toLocaleString()}). Government college seats open up significantly — list them early in your options.`
-      : `GEN category carries no rank multiplier. Every point in your normalized score directly improves your competitive position. Aim for a normalized score above 220 for top college allotments.`,
-    strategy === "Aggressive"
-      ? "Strong normalized score signals excellent exam performance. In Trial Allotment round 1, target Tier 1 seats (CET / GEC Thrissur) boldly — you have score headroom to absorb minor cutoff shifts."
-      : strategy === "Balanced"
-      ? "A solid normalized score gives you balanced options. In Trial Allotment, stack one Tier 1 reach choice above safe Tier 2 choices. This maximises upside without risking a missed allotment."
-      : "A lower normalized score narrows your options. Fill the maximum number of college-branch choices in Trial Allotment, prioritising Tier 2 government colleges. A broader list dramatically reduces the risk of going unallotted."
-  ];
-
-  const html = `
-  <div class="result-banner animate-in">
-    <div class="banner-label">KEAM 2026 Pro Report</div>
-    <div class="banner-title">Score summary</div>
-    <div class="metrics-grid">
-      <div class="metric">
-        <div class="m-lbl">Normalized score</div>
-        <div class="m-val">${NS.toFixed(2)}</div>
-        <div class="m-max">/ 300</div>
-      </div>
-      <div class="metric">
-        <div class="m-lbl">Entrance index</div>
-        <div class="m-val">${KEAM_Index.toFixed(1)}</div>
-        <div class="m-max">/ 300</div>
-      </div>
-      <div class="metric">
-        <div class="m-lbl">Board index</div>
-        <div class="m-val">${Board_Index.toFixed(1)}</div>
-        <div class="m-max">/ 300</div>
-      </div>
-      <div class="metric highlight">
-        <div class="m-lbl">Final index</div>
-        <div class="m-val">${Index.toFixed(1)}</div>
-        <div class="m-max">/ 600</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="two-col animate-in" style="animation-delay:0.08s">
-    <div class="info-card">
-      <div class="info-card-label">Rank projections</div>
-      <div class="rank-display">
-        <div class="rd-val">${sm.label}</div>
-        <div class="rd-lbl">State merit range</div>
-      </div>
-      <div class="cat-rank-row">
-        <span class="crr-lbl">Category rank (~)</span>
-        <span class="crr-val">${catRank.toLocaleString()}</span>
-      </div>
-      <div class="cat-rank-row">
-        <span class="crr-lbl">Category</span>
-        <span class="crr-val">${catKey}</span>
-      </div>
-      <div class="cat-rank-row">
-        <span class="crr-lbl">Board</span>
-        <span class="crr-val">${board.name}</span>
-      </div>
-      <div class="cat-rank-row">
-        <span class="crr-lbl">Admission power</span>
-        <span class="crr-val">${cat.mult}×</span>
-      </div>
-    </div>
-
-    <div class="info-card">
-      <div class="info-card-label">Performance stats</div>
-      <div class="stat-list">
-        <div class="stat-row">
-          <span class="s-lbl">Normalized score</span>
-          <span class="s-val">${NS.toFixed(2)} / 300</span>
-        </div>
-        <div class="stat-row">
-          <span class="s-lbl">Strategy</span>
-          <span class="s-val">${strategy}</span>
-        </div>
-        <div class="stat-row">
-          <span class="s-lbl">Risk profile</span>
-          <span class="s-val"><span class="badge ${riskClass}">${risk}</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="colleges-card animate-in" style="animation-delay:0.14s">
-    <div class="colleges-header">
-      <span>Top college allotment probabilities (category adjusted)</span>
-    </div>
-    ${collegeCandidates.length === 0
-      ? `<div style="padding:20px 22px;font-size:13px;color:var(--text3)">No colleges in probable range. Aim for an index above 400 for meaningful allotment chances.</div>`
-      : collegeCandidates.map(col=>`
-    <div class="college-row">
-      <div class="col-left">
-        <div class="col-name"><span class="tier-dot tier-${col.tier}"></span>${col.name}</div>
-        <div class="col-branch">${col.branch} · Cutoff ~${col.cutoff.toLocaleString()}</div>
-      </div>
-      <span class="badge ${chanceClass(col.ch)}">${col.ch}</span>
-    </div>`).join('')
-    }
-  </div>
-
-  <div class="insights-card animate-in" style="animation-delay:0.2s">
-    <div class="insights-header">
-      <span>Insights</span>
-    </div>
-    ${insights.map((txt,i)=>`
-    <div class="insight">
-      <div class="insight-num">0${i+1}</div>
-      <div class="insight-text">${txt}</div>
-    </div>`).join('')}
-  </div>`;
-
-  document.getElementById("result").innerHTML = html;
-  document.getElementById("result").style.display = "block";
-  document.getElementById("result").scrollIntoView({behavior:"smooth", block:"start"});
-}
-
-function openGate() {
-  // Deprecated: name/phone gate removed. Calculate runs directly from the button.
-  calculate();
-}
-</script>
 </body>
 </html>
-

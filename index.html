@@ -58,6 +58,34 @@
 
   .page { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 0 24px 80px; }
 
+  /* Nav links - wraps gracefully on narrow screens instead of forcing overflow */
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .nav-link {
+    font-size: 13px;
+    color: var(--text2);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .nav-link-active { color: var(--accent); font-weight: 600; }
+  .nav-link-pill {
+    font-size: 12px;
+    color: var(--text3);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 5px 10px;
+  }
+  @media (max-width: 480px) {
+    .nav-links { gap: 8px 12px; justify-content: center; }
+    .nav-link { font-size: 12.5px; }
+  }
+
   /* Header */
   .header {
     padding: 56px 0 48px;
@@ -441,6 +469,205 @@
   }
   .insight-text { font-size: 13px; color: var(--text2); line-height: 1.6; padding-top: 4px; }
 
+  /* Info/content article section */
+  .info-article {
+    margin-top: 48px;
+    padding-top: 8px;
+  }
+  .info-article h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .info-article h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .info-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .info-block p {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .info-block p:last-child { margin-bottom: 0; }
+  .info-block strong { color: var(--text); font-weight: 500; }
+  .board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0 4px;
+  }
+  .board-pill {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+  }
+  .board-pill .bp-name { font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 3px; }
+  .board-pill .bp-desc { font-size: 12px; color: var(--text3); line-height: 1.5; }
+  .step-list {
+    list-style: none;
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .step-list li {
+    counter-increment: step;
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    padding-left: 38px;
+    position: relative;
+  }
+  .step-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-list strong { color: var(--text); }
+  .faq-row {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+  .faq-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-row .faq-q {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .faq-row .faq-a {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+
+  /* Dates table */
+  .dates-table-wrap { overflow-x: auto; margin: 0 -4px; }
+  .dates-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .dates-table th {
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 0 14px 10px 4px;
+    border-bottom: 1px solid var(--border2);
+  }
+  .dates-table td {
+    padding: 11px 14px 11px 4px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+  }
+  .dates-table tr:last-child td { border-bottom: none; }
+  .dates-table td.dt-event { color: var(--text); font-weight: 500; }
+  .dates-table td.dt-date { white-space: nowrap; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 12px; text-align: right; }
+  /* On narrow screens, collapse the table into stacked label/value rows so nothing requires horizontal scrolling */
+  @media (max-width: 520px) {
+    .dates-table thead { display: none; }
+    .dates-table, .dates-table tbody, .dates-table tr, .dates-table td { display: block; width: 100%; }
+    .dates-table tr {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .dates-table tr:last-child { border-bottom: none; }
+    .dates-table td { padding: 2px 0; border-bottom: none; }
+    .dates-table td.dt-event { font-size: 13px; }
+    .dates-table td.dt-date { text-align: left; font-size: 13px; margin-top: 2px; }
+  }
+  .dates-note {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .callout {
+    background: var(--accent-dim2);
+    border: 1px solid rgba(232,197,71,0.18);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+  .callout strong { color: var(--text); }
+  .internal-link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-top: 4px;
+  }
+  .internal-link-row .il-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
+  .internal-link-row .il-text strong { color: var(--text); }
+  .internal-link-row a {
+    flex-shrink: 0;
+    background: var(--accent);
+    color: #0d0f14;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+  }
+  @media (max-width: 540px) {
+    .internal-link-row { flex-direction: column; align-items: stretch; text-align: center; }
+  }
+
+  .gov-link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .gov-link-card {
+    display: block;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .gov-link-card:hover { border-color: var(--accent); }
+  .gov-link-card .gl-name { font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 3px; }
+  .gov-link-card .gl-desc { font-size: 11.5px; color: var(--text3); line-height: 1.5; }
+  .gov-link-card .gl-url { font-size: 11px; color: var(--accent); font-family: 'DM Mono', monospace; margin-top: 6px; display: block; }
+
   /* Footer */
   .footer {
     margin-top: 56px;
@@ -496,37 +723,31 @@
 </style>
 </head>
 <body>
-<!-- Hidden form for Netlify build-time detection -->
-<form name="keam-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="keam-leads">
-  <input name="bot-field">
-  <input type="text" name="name">
-  <input type="tel" name="phone">
-  <button type="submit">Submit</button>
-</form>
-
 <div class="page">
 
-  <div class="brand-header">
- <nav style="border-bottom: 1px solid var(--border); background: var(--bg); padding: 15px 20px;">
-  <div style="max-width: 680px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-    <div class="pw-brand">
-       <img src="logo.png" alt="Logo" style="height: 36px; border-radius: 4px;">
-       <div style="width:1px; height:14px; background:var(--border2); margin:0 12px;"></div>
-       <span style="font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--text3);">Analytical Partner</span>
+  <nav style="border-bottom: 1px solid var(--border); background: var(--bg); padding: 15px 20px;">
+    <div style="max-width: 820px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <div style="display:flex; align-items:center;">
+         <img src="logo.png" alt="Logo" style="height: 36px; border-radius: 4px;">
+         <div style="width:1px; height:14px; background:var(--border2); margin:0 12px;"></div>
+         <span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--text3);">Analytical Partner</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link nav-link-active">Predictor</a>
+        <a href="colleges.html" class="nav-link">Colleges</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="privacy.html" class="nav-link">Privacy Policy</a>
+        <a href="https://distancetoplanets.com" target="_blank" rel="noopener" class="nav-link nav-link-pill">Our Work ↗</a>
+      </div>
     </div>
-    
-    <div class="nav-links" style="display: flex; gap: 15px;">
-      <a href="index.html" style="font-size: 13px; color: var(--gold); text-decoration: none; font-weight: 600;">Predictor</a>
-      <a href="contact.html" style="font-size: 13px; color: var(--text2); text-decoration: none; font-weight: 500;">Contact</a>
-      <a href="about.html" style="font-size: 13px; color: var(--text2); text-decoration: none; font-weight: 500;">About</a>
-      <a href="privacy.html" style="font-size: 13px; color: var(--text2); text-decoration: none; font-weight: 500;">Privacy</a>
-    </div>
-  </div>
-</nav 
+  </nav>
+
+  <header class="header">
     <div class="header-eyebrow">Kerala Engineering Admission 2026</div>
     <h1>KEAM Rank <em>Predictor</em></h1>
     <p class="header-sub">5:3:2 weighted PCM index · 2026 normalization standards · Kerala reservation rules</p>
+    <p style="font-size:12px; color:var(--text3); margin-top:6px;">Owned by <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600; text-decoration:none;">GoFinanciallyFit.com</a> — practical money tips and guidance for better financial habits</p>
   </header>
 
   <div class="card">
@@ -541,21 +762,32 @@
     </div>
 
     <div class="card-section">
-      <div class="section-label">Plus Two marks (DHSE — out of 120)</div>
+      <div class="section-label">Plus Two / Class 12 board</div>
+      <div class="field" style="margin-bottom:14px;">
+        <label>Select your board</label>
+        <select id="board">
+          <option value="STATE">Kerala State Board (DHSE)</option>
+          <option value="CBSE">CBSE</option>
+          <option value="ICSE">ICSE / ISC (CISCE)</option>
+          <option value="NIOS">NIOS</option>
+        </select>
+      </div>
+      <div class="section-label">Class 12 marks (out of 100 per subject)</div>
       <div class="input-grid">
         <div class="field">
           <label>Physics</label>
-          <input type="number" id="phy" min="0" max="120" placeholder="0 – 120">
+          <input type="number" id="phy" min="0" max="100" placeholder="0 – 100">
         </div>
         <div class="field">
           <label>Chemistry</label>
-          <input type="number" id="che" min="0" max="120" placeholder="0 – 120">
+          <input type="number" id="che" min="0" max="100" placeholder="0 – 100">
         </div>
         <div class="field">
           <label>Maths</label>
-          <input type="number" id="mat" min="0" max="120" placeholder="0 – 120">
+          <input type="number" id="mat" min="0" max="100" placeholder="0 – 100">
         </div>
       </div>
+      <div style="font-size:11px; color:var(--text3); margin-top:10px;">DHSE candidates: enter your combined Theory + Practical/Internal mark out of 100 for each subject (as shown on your Plus Two marksheet).</div>
     </div>
 
     <div class="card-section">
@@ -581,49 +813,234 @@
     <div class="error-msg" id="err"></div>
 
     <div class="btn-wrap">
-      <button class="calc-btn" onclick="openGate()">Calculate my rank →</button>
+      <button class="calc-btn" onclick="calculate()">Calculate my rank →</button>
     </div>
   </div>
 
-  <!-- Gate modal overlay -->
-  <div id="gate-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:200; display:none; align-items:center; justify-content:center; padding:20px;">
-    <div id="gate-box" style="background:var(--bg2); border:1px solid rgba(232,197,71,0.3); border-radius:var(--radius-lg); width:100%; max-width:420px; overflow:hidden;">
-      <div style="padding:22px 24px 16px; border-bottom:1px solid var(--border);">
-        <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px;">One quick step</div>
-        <div style="font-size:17px; font-weight:500; color:var(--text); margin-bottom:3px;">Enter your details to see your rank</div>
-        <div style="font-size:12px; color:var(--text2);">We'll send you personalised counselling tips based on your result.</div>
+  <section class="info-article">
+    <h2>How the KEAM 2026 Rank Predictor Works</h2>
+    <div class="info-block">
+      <p>This tool estimates your KEAM 2026 engineering rank using CEE Kerala's <strong>50:50 Index Score</strong> formula: your normalized entrance exam score (out of 300) plus your standardized Plus Two score (out of 300), for a final index out of 600. Within the Plus Two component, CEE Kerala applies the 2026 <strong>5:3:2 weighted PCM ratio</strong> — Mathematics carries 50% weight (150 marks), Physics 30% (90 marks), and Chemistry 20% (60 marks) — reflecting Maths' outsized influence on your final rank.</p>
+      <p>Because students come from different boards with different marking styles, CEE Kerala's official process applies cross-board equalization before the 5:3:2 weights. However, as no reliable per-board topper benchmarks are publicly available, this tool applies the weights uniformly across all boards — so your raw marks out of 100 are weighted at 150 (Maths), 90 (Physics), and 60 (Chemistry) regardless of board. This is a simplification of the official method, used here to avoid false precision.</p>
+    </div>
+
+    <h2>KEAM 2026 Important Dates</h2>
+    <div class="info-block">
+      <div class="dates-table-wrap">
+        <table class="dates-table">
+          <thead>
+            <tr><th>Event</th><th>Date</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="dt-event">Application form released</td><td class="dt-date">Jan 5, 2026</td></tr>
+            <tr><td class="dt-event">Registration deadline (extended)</td><td class="dt-date">Feb 6, 2026</td></tr>
+            <tr><td class="dt-event">Document upload deadline</td><td class="dt-date">Feb 7, 2026</td></tr>
+            <tr><td class="dt-event">Admit card released</td><td class="dt-date">Apr 9, 2026</td></tr>
+            <tr><td class="dt-event">KEAM CBT exam (Engineering &amp; Pharmacy)</td><td class="dt-date">Apr 17 – 22, 2026</td></tr>
+            <tr><td class="dt-event">Provisional answer key</td><td class="dt-date">Apr 22, 2026</td></tr>
+            <tr><td class="dt-event">Result &amp; normalized scorecard</td><td class="dt-date">May 12, 2026</td></tr>
+            <tr><td class="dt-event">Plus Two marks submission window</td><td class="dt-date">Late May – Jun 18, 2026</td></tr>
+            <tr><td class="dt-event">Final engineering rank list</td><td class="dt-date">On/before Jun 20, 2026</td></tr>
+            <tr><td class="dt-event">CAP option registration opens</td><td class="dt-date">Late Jun 2026 (expected)</td></tr>
+            <tr><td class="dt-event">Trial allotment</td><td class="dt-date">Early Jul 2026 (expected)</td></tr>
+            <tr><td class="dt-event">Round 1 seat allotment</td><td class="dt-date">Third week of Jul 2026 (expected)</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div style="padding:20px 24px 22px;">
-          <div style="display:flex; flex-direction:column; gap:14px;">
-            <div style="display:flex; flex-direction:column; gap:5px;">
-              <label style="font-size:12px; color:var(--text2); font-weight:500;">Your name</label>
-              <input type="text" id="gate-name" name="name" placeholder="e.g. Arjun Menon"
-                style="background:var(--bg3); border:1px solid var(--border2); border-radius:var(--radius); color:var(--text); font-family:'Outfit',sans-serif; font-size:14px; height:42px; padding:0 12px; outline:none; width:100%; transition:border-color 0.2s, box-shadow 0.2s;">
-            </div>
-            <div style="display:flex; flex-direction:column; gap:5px;">
-              <label style="font-size:12px; color:var(--text2); font-weight:500;">Phone number</label>
-              <input type="tel" id="gate-phone" name="phone" placeholder="+91 98765 43210"
-                style="background:var(--bg3); border:1px solid var(--border2); border-radius:var(--radius); color:var(--text); font-family:'Outfit',sans-serif; font-size:14px; height:42px; padding:0 12px; outline:none; width:100%; transition:border-color 0.2s, box-shadow 0.2s;">
-            </div>
-            <div id="gate-err" style="display:none; font-size:12px; color:var(--red);">Please enter both your name and phone number.</div>
-            <button onclick="submitGate()"
-              style="background:var(--accent); border:none; border-radius:var(--radius); color:#0d0f14; cursor:pointer; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; height:44px; width:100%; transition:background 0.2s;">
-              Show my rank →
-            </button>
-            <div style="font-size:11px; color:var(--text3); text-align:center;">We only collect name and phone. No spam, ever.</div>
-          </div>
+      <div class="dates-note">Dates for completed milestones (registration through rank list) reflect the official 2026 cycle. Counselling and allotment dates from CAP option registration onward are projected from the 2025 schedule and will be updated once CEE Kerala publishes the official 2026 CAP calendar — always confirm on <strong style="color:var(--text2);">cee.kerala.gov.in</strong> before making admission decisions.</div>
+    </div>
+
+    <h2>KEAM Normalization Explained</h2>
+    <div class="info-block">
+      <p>KEAM normalization solves two separate fairness problems. The first is <strong>session normalization</strong>: because the 2026 exam ran as a computer-based test across multiple shifts (April 17–22) with different question sets each day, CEE Kerala converts your raw marks into a percentile within your own session, then maps that percentile onto a common 0–300 scale using an interpolated average method. This is why your "normalized score" rarely matches your raw marks directly — a candidate who scored fewer raw marks on a harder shift can end up with a higher normalized score than someone who scored more on an easier shift.</p>
+      <p>The second is <strong>board standardization</strong> of your Plus Two marks. Historically (pre-2011), KEAM simply averaged your Physics, Chemistry, and Maths percentages — but this disadvantaged students from boards that mark more strictly. From 2026 onward, CEE Kerala rescales each subject mark relative to that board's typical topper performance, referenced against the Kerala State Board, before applying the 50:30:20 (Maths:Physics:Chemistry) weights. In simple terms:</p>
+      <div class="callout">
+        <strong>Worked example:</strong> Suppose a CBSE student scores 80/100 in Maths, and the typical CBSE topper score used for standardization is 98, while the Kerala State Board reference topper is 100. The standardized Maths mark becomes (80 ÷ 98) × 100 ≈ 81.6, which is then converted to a weighted score out of 150 for the 50% Maths component. A Kerala State Board student scoring the same raw 80/100 (topper 100) standardizes to exactly 80, then weighted the same way. The gap between the two reflects how the boards' raw scales were already different before normalization — that's precisely what this step is designed to correct.</div>
+      <p>This is also why two students with identical raw percentages but different boards can land at slightly different points in the final 600-mark index, and why CEE Kerala's recent prospectus changes around this exact formula have drawn legal scrutiny — including a Kerala High Court challenge from CBSE students in 2026, which the court ultimately dismissed, upholding the revised standardization method.</p>
+    </div>
+
+    <h3>Board-specific notes</h3>
+    <div class="info-block">
+      <div class="board-grid">
+        <div class="board-pill">
+          <div class="bp-name">Kerala State Board (DHSE)</div>
+          <div class="bp-desc">Each Plus Two subject is marked out of 100 (Theory + Practical/Internal combined). Enter your combined subject total directly from your marksheet.</div>
+        </div>
+        <div class="board-pill">
+          <div class="bp-name">CBSE</div>
+          <div class="bp-desc">Enter your Class 12 Physics, Chemistry, and Maths marks out of 100 as shown on your CBSE marksheet (theory + practical combined).</div>
+        </div>
+        <div class="board-pill">
+          <div class="bp-name">ICSE / ISC (CISCE)</div>
+          <div class="bp-desc">ISC Class 12 subjects are marked out of 100. Use your ISC Physics, Chemistry, and Maths totals — not the ICSE Class 10 aggregate.</div>
+        </div>
+        <div class="board-pill">
+          <div class="bp-name">NIOS</div>
+          <div class="bp-desc">NIOS Senior Secondary subjects are marked out of 100. Enter your theory (and practical, where applicable) combined total per subject.</div>
+        </div>
       </div>
     </div>
-  </div>
+
+    <h2>Step-by-Step Instructions</h2>
+    <div class="info-block">
+      <ol class="step-list">
+        <li><strong>Step 1:</strong> Enter your normalized KEAM entrance score out of 300, as shown on your CEE Kerala scorecard.</li>
+        <li><strong>Step 2:</strong> Select your board (Kerala State, CBSE, ICSE/ISC, or NIOS), then enter your Class 12 Physics, Chemistry, and Mathematics marks — each out of 100.</li>
+        <li><strong>Step 3:</strong> Select your reservation category.</li>
+        <li><strong>Step 4:</strong> Click "Calculate my rank" to see your standardized board index, final index score, projected state merit range, and category rank.</li>
+      </ol>
+    </div>
+
+    <h2>Tips to Improve Your Rank Before Counselling</h2>
+    <div class="info-block">
+      <p>Once your KEAM entrance score is locked in, your <strong>Plus Two marks submission</strong> is the last lever you control before the rank list is finalized. A few practical points worth knowing:</p>
+      <p><strong>Double-check your marksheet entry.</strong> CEE Kerala builds your standardized board index directly from the Physics, Chemistry, and Maths marks you submit through the candidate portal. A transcription error — entering 78 instead of 87, for instance — silently lowers your index without any error message, since the number is still a valid mark. Cross-verify every digit against your original marksheet before confirming submission.</p>
+      <p><strong>Understand which subject moves your index most.</strong> Under the 5:3:2 weighting, Mathematics alone determines 50% of your 300-mark board index. A 10-mark improvement in Maths shifts your board index roughly twice as much as the same improvement in Physics, and two-and-a-half times as much as in Chemistry. If you're choosing whether to pursue a revaluation or supplementary exam in only one subject, Maths offers the largest leverage.</p>
+      <p><strong>Plan your CAP option list realistically, not aspirationally.</strong> Once your final rank is out, list every college-branch combination you'd genuinely accept, ranked in true order of preference — not just your top choices. CEE Kerala's Single Window System allots strictly by preference order and rank; an unrealistically short list increases your risk of going unallotted in Round 1, while a longer list costs nothing extra and only improves your odds.</p>
+      <p><strong>Track the official CAP calendar closely.</strong> Option registration windows, trial allotment, and document verification deadlines are typically just a few days each, and missing one can cost you an entire round. Bookmark the CEE Kerala candidate portal and check it directly rather than relying solely on third-party news aggregators, which can lag behind official updates by a day or more.</p>
+    </div>
+
+    <h2>Official Government Resources</h2>
+    <div class="info-block">
+      <p>This predictor is built using publicly available information from the 2026 KEAM prospectus and related official notifications. For authoritative, up-to-date information — including the final rank list, CAP schedule, and board-specific marksheet verification — always refer directly to these official sources:</p>
+      <div class="gov-link-grid">
+        <a class="gov-link-card" href="https://cee.kerala.gov.in/" target="_blank" rel="noopener">
+          <div class="gl-name">CEE Kerala</div>
+          <div class="gl-desc">Official KEAM portal — rank list, scorecard, CAP counselling, and Plus Two marks submission.</div>
+          <span class="gl-url">cee.kerala.gov.in</span>
+        </a>
+        <a class="gov-link-card" href="https://dhsekerala.gov.in/" target="_blank" rel="noopener">
+          <div class="gl-name">DHSE Kerala</div>
+          <div class="gl-desc">Directorate of Higher Secondary Education — Kerala Plus Two results, syllabus, and marksheets.</div>
+          <span class="gl-url">dhsekerala.gov.in</span>
+        </a>
+        <a class="gov-link-card" href="https://www.cbse.gov.in/" target="_blank" rel="noopener">
+          <div class="gl-name">CBSE</div>
+          <div class="gl-desc">Central Board of Secondary Education — Class 12 results and official marksheet verification.</div>
+          <span class="gl-url">cbse.gov.in</span>
+        </a>
+        <a class="gov-link-card" href="https://www.cisce.org/" target="_blank" rel="noopener">
+          <div class="gl-name">CISCE (ICSE / ISC)</div>
+          <div class="gl-desc">Council for the Indian School Certificate Examinations — ISC Class 12 results and certificates.</div>
+          <span class="gl-url">cisce.org</span>
+        </a>
+        <a class="gov-link-card" href="https://www.nios.ac.in/" target="_blank" rel="noopener">
+          <div class="gl-name">NIOS</div>
+          <div class="gl-desc">National Institute of Open Schooling — Senior Secondary results and certification.</div>
+          <span class="gl-url">nios.ac.in</span>
+        </a>
+        <a class="gov-link-card" href="https://education.kerala.gov.in/dhse-2/" target="_blank" rel="noopener">
+          <div class="gl-name">Kerala General Education Dept.</div>
+          <div class="gl-desc">Government of Kerala's General Education Department, overseeing DHSE and higher secondary policy.</div>
+          <span class="gl-url">education.kerala.gov.in</span>
+        </a>
+      </div>
+    </div>
+
+    <h3>Previous Year KEAM Question Papers &amp; Answer Keys (Official)</h3>
+    <div class="info-block">
+      <p>CEE Kerala hosts a dedicated portal for every KEAM cycle, where question papers, provisional and final answer keys, and notifications for that year are published once the exam concludes. Each year's portal follows the same official URL pattern — <strong>cee.kerala.gov.in/keam[YEAR]/</strong> — with an "Answer Key" section listing every day and shift's paper as a downloadable PDF. Use the links below to jump to each year's official portal directly:</p>
+      <div class="gov-link-grid">
+        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2026/" target="_blank" rel="noopener">
+          <div class="gl-name">KEAM 2026 Portal</div>
+          <div class="gl-desc">Question papers, final answer keys, and notifications for the 2026 cycle.</div>
+          <span class="gl-url">cee.kerala.gov.in/keam2026</span>
+        </a>
+        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2025/" target="_blank" rel="noopener">
+          <div class="gl-name">KEAM 2025 Portal</div>
+          <div class="gl-desc">2025 question papers, answer keys, and last-rank allotment lists.</div>
+          <span class="gl-url">cee.kerala.gov.in/keam2025</span>
+        </a>
+        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2024/" target="_blank" rel="noopener">
+          <div class="gl-name">KEAM 2024 Portal</div>
+          <div class="gl-desc">2024 cycle papers and notifications — the first year KEAM moved to CBT mode.</div>
+          <span class="gl-url">cee.kerala.gov.in/keam2024</span>
+        </a>
+        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2023/" target="_blank" rel="noopener">
+          <div class="gl-name">KEAM 2023 Portal</div>
+          <div class="gl-desc">2023 cycle pen-and-paper exam papers and answer keys.</div>
+          <span class="gl-url">cee.kerala.gov.in/keam2023</span>
+        </a>
+        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2022/" target="_blank" rel="noopener">
+          <div class="gl-name">KEAM 2022 Portal</div>
+          <div class="gl-desc">2022 cycle papers and notifications archive.</div>
+          <span class="gl-url">cee.kerala.gov.in/keam2022</span>
+        </a>
+        <a class="gov-link-card" href="https://cee.kerala.gov.in/keam2021/" target="_blank" rel="noopener">
+          <div class="gl-name">KEAM 2021 Portal</div>
+          <div class="gl-desc">2021 cycle papers and notifications archive.</div>
+          <span class="gl-url">cee.kerala.gov.in/keam2021</span>
+        </a>
+      </div>
+      <div class="dates-note">CEE Kerala periodically restructures older year-portals, and very old cycles (pre-2020) are sometimes archived or removed. If a year's portal link above doesn't load, search "[year] KEAM question paper" directly on cee.kerala.gov.in or check the Notifications section on the current portal for an archive link.</div>
+    </div>
+
+    <div class="info-block">
+      <div class="internal-link-row">
+        <div class="il-text"><strong>Want to know which colleges your rank can realistically reach?</strong> See last year's closing ranks for CET Trivandrum, TKM Kollam, MEC Thrikkakara, and more.</div>
+        <a href="colleges.html">View College Cutoffs →</a>
+      </div>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="info-block">
+      <div class="faq-row">
+        <div class="faq-q">Is this the official CEE Kerala rank predictor?</div>
+        <div class="faq-a">No. This is an independent estimation tool built on the publicly documented 2026 KEAM Index Score methodology. Always cross-check against your official CEE Kerala scorecard and the final published rank list.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">What is a good index score for TKM Kollam or CET Trivandrum?</div>
+        <div class="faq-a">Based on 2025 trends, CET Trivandrum's CSE program closed around rank 271–571 for General category, meaning you'd typically need an index in the 540+ range out of 600. TKM Kollam CSE closed closer to rank 1,100–2,279, achievable with a somewhat lower index, particularly for non-CSE branches like ECE or Mechanical. These figures shift slightly each year based on competition and seat availability.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">How does the 5:3:2 ratio affect CBSE vs State Board students?</div>
+        <div class="faq-a">Since Maths now carries 50% of the board weightage (versus a flatter average previously), students strong in Maths — regardless of board — see a bigger boost to their board index. The 5:3:2 ratio applies the same way for all boards: your raw Physics, Chemistry, and Maths marks out of 100 are weighted directly at 90, 60, and 150 respectively.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">When will the CEE Kerala trial allotments begin?</div>
+        <div class="faq-a">Following the 2026 rank list (published on or before June 20), CAP option registration is expected to open in the last week of June 2026, with trial allotment results typically released in early-to-mid July, based on the 2025 cycle's pattern. CEE Kerala publishes the exact dates on its official portal closer to the time.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">Why does my board matter for the calculation?</div>
+        <div class="faq-a">In this tool, it currently doesn't — the board field is collected for context, but all supported boards (Kerala State Board, CBSE, ICSE, NIOS) are treated identically: your raw marks out of 100 are weighted using the 5:3:2 ratio without any board-specific rescaling. CEE Kerala's official process does apply cross-board equalization, but as no reliable per-board topper benchmarks are publicly available, this tool applies the weights uniformly to avoid false precision.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">What if I didn't study Chemistry?</div>
+        <div class="faq-a">CEE Kerala's prospectus allows Computer Science, Biotechnology, or Biology marks as a substitute, in that order of preference, if Chemistry wasn't part of your curriculum.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">Does this tool account for reservation categories correctly?</div>
+        <div class="faq-a">Yes — selecting your category applies the appropriate admission-power multiplier used in CEE Kerala's category-wise rank conversion, giving you an estimated category rank alongside your overall State Merit (SM) range. Exact multipliers and seat-matrix effects can vary slightly by year and should be confirmed against the official rank list.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">Can I use this predictor before I've submitted my Plus Two marks to CEE Kerala?</div>
+        <div class="faq-a">Yes — you only need your own marksheet figures, not a CEE-confirmed submission, to get an estimate. Just make sure you enter the exact combined Theory + Practical/Internal totals from your official marksheet for accuracy.</div>
+      </div>
+    </div>
+  </section>
+
 
   <div id="result"></div>
 
   <footer class="footer">
-    KEAM 2026 Rank Predictor · Estimates based on 2026 single-paper trends · Not an official CEE Kerala tool
+    KEAM 2026 Rank Predictor · Estimates based on 2026 normalization trends · Not an official CEE Kerala tool<br>
+    © 2026 <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600; text-decoration:none;">GoFinanciallyFit.com</a>
   </footer>
 </div>
 
 <script>
+// CEE Kerala's 2026 prospectus standardizes Plus Two marks across boards before
+// applying 5:3:2 weights. Since no reliable per-board topper benchmarks are
+// publicly available, this tool treats all boards identically — marks out of 100
+// are weighted directly: Maths ×1.5 (→150), Physics ×0.9 (→90), Chem ×0.6 (→60).
+// The BOARD_MAP is retained for display purposes only.
+const BOARD_MAP = {
+  STATE: { name: "Kerala State Board (DHSE)", topper: 100 },
+  CBSE:  { name: "CBSE",                       topper: 100 },
+  ICSE:  { name: "ICSE / ISC (CISCE)",         topper: 100 },
+  NIOS:  { name: "NIOS",                       topper: 100 }
+};
+
 const CAT_MAP = {
   GEN:{name:"State Merit (General)",mult:1.0},
   EZ:{name:"Ezhava / Thiyya / Billava",mult:1.25},
@@ -695,6 +1112,7 @@ function calculate() {
   const Ch = parseFloat(document.getElementById("che").value);
   const M = parseFloat(document.getElementById("mat").value);
   const catKey = document.getElementById("cat").value;
+  const boardKey = document.getElementById("board").value;
 
   const errEl = document.getElementById("err");
   errEl.style.display = "none";
@@ -704,15 +1122,22 @@ function calculate() {
     errEl.style.display = "block"; return;
   }
   if(NS < 0 || NS > 300) { errEl.textContent = "Error: Normalized Score must be between 0 and 300."; errEl.style.display="block"; return; }
-  if([P,Ch,M].some(v=>v<0||v>120)) { errEl.textContent = "Error: Board marks must be between 0 and 120."; errEl.style.display="block"; return; }
+  if([P,Ch,M].some(v=>v<0||v>100)) { errEl.textContent = "Error: Board marks must be between 0 and 100."; errEl.style.display="block"; return; }
 
   const KEAM_Index = NS;
+  const board = BOARD_MAP[boardKey];
 
-  const P_100 = (P/120)*100, Ch_100 = (Ch/120)*100, M_100 = (M/120)*100;
-  const S_P  = 75 + ((P_100  - 70) / 16) * 15;
-  const S_Ch = 75 + ((Ch_100 - 75) / 15) * 15;
-  const S_M  = 75 + ((M_100  - 72) / 18) * 15;
-  const Board_Index = (S_M * 1.5) + (S_P * 0.9) + (S_Ch * 0.6);
+  // Cross-board standardization: rescale each board's mark against the
+  // Kerala State Board topper benchmark, using each board's typical topper mark.
+  const P_eq = Math.min(100, (P / board.topper) * BOARD_MAP.STATE.topper);
+  const Ch_eq = Math.min(100, (Ch / board.topper) * BOARD_MAP.STATE.topper);
+  const M_eq = Math.min(100, (M / board.topper) * BOARD_MAP.STATE.topper);
+
+  // 5:3:2 weighting -> Maths 150, Physics 90, Chemistry 60 (out of 300)
+  const M_w = (M_eq / 100) * 150;
+  const P_w = (P_eq / 100) * 90;
+  const Ch_w = (Ch_eq / 100) * 60;
+  const Board_Index = M_w + P_w + Ch_w;
 
   const Index = KEAM_Index + Board_Index;
   const cat = CAT_MAP[catKey];
@@ -732,11 +1157,10 @@ function calculate() {
   const chanceClass = c => c==="High"?"badge-green":c==="Moderate"?"badge-orange":"badge-red";
 
   const boardShare = (Board_Index / (Index||1) * 100).toFixed(0);
-  const mWeight = S_M*1.5, pWeight = S_P*0.9, cWeight = S_Ch*0.6;
-  const dom = mWeight>=pWeight&&mWeight>=cWeight?"Maths (1.5×)":pWeight>=cWeight?"Physics (0.9×)":"Chemistry (0.6×)";
+  const dom = M_w>=P_w&&M_w>=Ch_w?"Maths (50% weight)":P_w>=Ch_w?"Physics (30% weight)":"Chemistry (20% weight)";
 
   const insights = [
-    `Your board index contributes ${boardShare}% of the final score. ${dom} is the dominant component — a +5 mark improvement in your weaker board subject can shift your index by up to 8 points and move you hundreds of ranks.`,
+    `Your board index contributes ${boardShare}% of the final score. ${dom} is the dominant component under the 2026 5:3:2 normalization — a +5 mark improvement in Maths has the largest impact, followed by Physics, then Chemistry.`,
     cat.mult > 1
       ? `The ${catKey} category multiplies admission power by ${cat.mult}×, pushing your effective rank to ~${catRank.toLocaleString()} (equivalent SM ~${sm.mid.toLocaleString()}). Government college seats open up significantly — list them early in your options.`
       : `GEN category carries no rank multiplier. Every point in your normalized score directly improves your competitive position. Aim for a normalized score above 220 for top college allotments.`,
@@ -789,6 +1213,10 @@ function calculate() {
       <div class="cat-rank-row">
         <span class="crr-lbl">Category</span>
         <span class="crr-val">${catKey}</span>
+      </div>
+      <div class="cat-rank-row">
+        <span class="crr-lbl">Board</span>
+        <span class="crr-val">${board.name}</span>
       </div>
       <div class="cat-rank-row">
         <span class="crr-lbl">Admission power</span>
@@ -849,61 +1277,9 @@ function calculate() {
 }
 
 function openGate() {
-  const NS = parseFloat(document.getElementById("normalizedScore").value);
-  const P = parseFloat(document.getElementById("phy").value);
-  const Ch = parseFloat(document.getElementById("che").value);
-  const M = parseFloat(document.getElementById("mat").value);
-  const catKey = document.getElementById("cat").value;
-
-  const errEl = document.getElementById("err");
-  errEl.style.display = "none";
-
-  if([NS,P,Ch,M].some(isNaN) || !catKey) {
-    errEl.textContent = "Please fill in all fields before calculating.";
-    errEl.style.display = "block"; return;
-  }
-  if(NS < 0 || NS > 300) { errEl.textContent = "Error: Normalized Score must be between 0 and 300."; errEl.style.display="block"; return; }
-  if([P,Ch,M].some(v=>v<0||v>120)) { errEl.textContent = "Error: Board marks must be between 0 and 120."; errEl.style.display="block"; return; }
-
-  const overlay = document.getElementById("gate-overlay");
-  overlay.style.display = "flex";
-  setTimeout(() => document.getElementById("gate-name").focus(), 100);
-}
-
-function submitGate(e) {
-  if (e) e.preventDefault();
-  const name  = document.getElementById("gate-name").value.trim();
-  const phone = document.getElementById("gate-phone").value.trim();
-  const gateErr = document.getElementById("gate-err");
-
-  if (!name || !phone) {
-    gateErr.style.display = "block"; return;
-  }
-  gateErr.style.display = "none";
-
-  // POST to Netlify Forms
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      "form-name": "keam-leads",
-      "name": name,
-      "phone": phone
-    }).toString()
-  }).catch(() => {});
-
-  // Hide gate and show result
-  document.getElementById("gate-overlay").style.display = "none";
+  // Deprecated: name/phone gate removed. Calculate runs directly from the button.
   calculate();
 }
-
-// Close gate if clicking outside the box
-document.addEventListener("click", function(e) {
-  const overlay = document.getElementById("gate-overlay");
-  if (overlay && overlay.style.display === "flex" && e.target === overlay) {
-    overlay.style.display = "none";
-  }
-});
 </script>
 </body>
 </html>

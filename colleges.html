@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KEAM 2026 College Cutoffs — Closing Ranks for Top Kerala Engineering Colleges</title>
+<meta name="description" content="KEAM 2025 closing ranks (used as the latest reference for 2026 planning) for CET Trivandrum, TKM Kollam, MEC Thrikkakara, Government Engineering College Thrissur, and other top Kerala engineering colleges across CSE, ECE, Mechanical, and Civil branches.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e29;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --text2: #8b90a0;
+    --text3: #555a6e;
+    --accent: #e8c547;
+    --accent2: #f0d870;
+    --accent-dim: rgba(232,197,71,0.12);
+    --accent-dim2: rgba(232,197,71,0.06);
+    --green: #4ade80;
+    --green-dim: rgba(74,222,128,0.12);
+    --orange: #fb923c;
+    --orange-dim: rgba(251,146,60,0.12);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.12);
+    --blue: #60a5fa;
+    --blue-dim: rgba(96,165,250,0.12);
+    --radius: 10px;
+    --radius-lg: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* Nav links - wraps gracefully on narrow screens instead of forcing overflow */
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .nav-link {
+    font-size: 13px;
+    color: var(--text2);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .nav-link-active { color: var(--accent); font-weight: 600; }
+  .nav-link-pill {
+    font-size: 12px;
+    color: var(--text3);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 5px 10px;
+  }
+  @media (max-width: 480px) {
+    .nav-links { gap: 8px 12px; justify-content: center; }
+    .nav-link { font-size: 12.5px; }
+  }
+
+  /* Header */
+  .header {
+    padding: 56px 0 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .header-sub {
+    font-size: 14px;
+    color: var(--text2);
+    margin-top: 4px;
+  }
+
+  /* Form card */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .card-section {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-size: 12px;
+    color: var(--text2);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .field input, .field select {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    height: 44px;
+    padding: 0 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b90a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+  .field input::placeholder { color: var(--text3); }
+  .field select option { background: #1a1e29; }
+
+  /* Error */
+  .error-msg {
+    display: none;
+    background: var(--red-dim);
+    border: 1px solid rgba(248,113,113,0.25);
+    border-radius: var(--radius);
+    color: var(--red);
+    font-size: 13px;
+    padding: 10px 14px;
+    margin: 0 28px 20px;
+  }
+
+  /* Submit */
+  .btn-wrap { padding: 20px 28px; }
+  .calc-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    color: #0d0f14;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    height: 48px;
+    padding: 0 32px;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .calc-btn:hover { background: var(--accent2); box-shadow: 0 4px 20px rgba(232,197,71,0.3); }
+  .calc-btn:active { transform: scale(0.98); }
+
+  /* Result */
+  #result { display: none; margin-top: 32px; }
+
+  .result-banner {
+    background: linear-gradient(135deg, #1a1e29 0%, #13161e 100%);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-banner::before {
+    content: 'KEAM 2026';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'DM Serif Display', serif;
+    font-size: 72px;
+    color: rgba(255,255,255,0.02);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .banner-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .banner-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 600px) { .metrics-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .metric {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .metric.highlight {
+    background: var(--accent-dim2);
+    border-color: rgba(232,197,71,0.2);
+  }
+  .metric .m-lbl {
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .metric .m-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .metric.highlight .m-val { color: var(--accent); }
+  .metric .m-max {
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* Two-col layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  .info-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+  }
+  .info-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 14px;
+  }
+
+  .rank-display {
+    background: var(--accent-dim);
+    border: 1px solid rgba(232,197,71,0.2);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .rank-display .rd-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .rank-display .rd-lbl {
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+
+  .cat-rank-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .cat-rank-row .crr-lbl { color: var(--text2); }
+  .cat-rank-row .crr-val {
+    font-family: 'DM Mono', monospace;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .stat-list { display: flex; flex-direction: column; gap: 2px; }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row .s-lbl { color: var(--text2); }
+  .stat-row .s-val { font-weight: 500; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .badge-green { background: var(--green-dim); color: var(--green); }
+  .badge-orange { background: var(--orange-dim); color: var(--orange); }
+  .badge-red { background: var(--red-dim); color: var(--red); }
+  .badge-blue { background: var(--blue-dim); color: var(--blue); }
+  .badge-accent { background: var(--accent-dim); color: var(--accent); }
+
+  /* Colleges */
+  .colleges-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .colleges-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .colleges-header span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+  .college-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 22px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .college-row:last-child { border-bottom: none; }
+  .college-row:hover { background: rgba(255,255,255,0.02); }
+  .col-left .col-name { font-size: 14px; color: var(--text); font-weight: 500; }
+  .col-left .col-branch {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: 'DM Mono', monospace;
+    margin-top: 2px;
+  }
+  .tier-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    display: inline-block; margin-right: 6px;
+  }
+  .tier-1 { background: var(--accent); }
+  .tier-2 { background: var(--blue); }
+  .tier-3 { background: var(--text3); }
+
+  /* Insights */
+  .insights-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .insights-header {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .insights-header span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+  .insight {
+    display: flex;
+    gap: 16px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .insight:last-child { border-bottom: none; }
+  .insight-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--border2);
+    line-height: 1;
+    min-width: 28px;
+  }
+  .insight-text { font-size: 13px; color: var(--text2); line-height: 1.6; padding-top: 4px; }
+
+  /* Info/content article section */
+  .info-article {
+    margin-top: 48px;
+    padding-top: 8px;
+  }
+  .info-article h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .info-article h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .info-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .info-block p {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .info-block p:last-child { margin-bottom: 0; }
+  .info-block strong { color: var(--text); font-weight: 500; }
+  .board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 16px 0 4px;
+  }
+  .board-pill {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+  }
+  .board-pill .bp-name { font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 3px; }
+  .board-pill .bp-desc { font-size: 12px; color: var(--text3); line-height: 1.5; }
+  .step-list {
+    list-style: none;
+    counter-reset: step;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .step-list li {
+    counter-increment: step;
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    padding-left: 38px;
+    position: relative;
+  }
+  .step-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-list strong { color: var(--text); }
+  .faq-row {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+  .faq-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-row .faq-q {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .faq-row .faq-a {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+
+  /* Dates table */
+  .dates-table-wrap { overflow-x: auto; margin: 0 -4px; }
+  .dates-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .dates-table th {
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 0 14px 10px 4px;
+    border-bottom: 1px solid var(--border2);
+  }
+  .dates-table td {
+    padding: 11px 14px 11px 4px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+  }
+  .dates-table tr:last-child td { border-bottom: none; }
+  .dates-table td.dt-event { color: var(--text); font-weight: 500; }
+  .dates-table td.dt-date { white-space: nowrap; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 12px; text-align: right; }
+  /* On narrow screens, collapse the table into stacked label/value rows so nothing requires horizontal scrolling */
+  @media (max-width: 520px) {
+    .dates-table thead { display: none; }
+    .dates-table, .dates-table tbody, .dates-table tr, .dates-table td { display: block; width: 100%; }
+    .dates-table tr {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .dates-table tr:last-child { border-bottom: none; }
+    .dates-table td { padding: 2px 0; border-bottom: none; }
+    .dates-table td.dt-event { font-size: 13px; }
+    .dates-table td.dt-date { text-align: left; font-size: 13px; margin-top: 2px; }
+  }
+  .dates-note {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .callout {
+    background: var(--accent-dim2);
+    border: 1px solid rgba(232,197,71,0.18);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+  .callout strong { color: var(--text); }
+  .internal-link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-top: 4px;
+  }
+  .internal-link-row .il-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
+  .internal-link-row .il-text strong { color: var(--text); }
+  .internal-link-row a {
+    flex-shrink: 0;
+    background: var(--accent);
+    color: #0d0f14;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+  }
+  @media (max-width: 540px) {
+    .internal-link-row { flex-direction: column; align-items: stretch; text-align: center; }
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeUp 0.4s ease forwards; }
+
+  /* Brand header */
+  .brand-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .brand-logo {
+    height: 36px;
+    width: 36px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+    padding: 2px;
+    flex-shrink: 0;
+  }
+  .brand-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text);
+  }
+  .brand-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding-left: 10px;
+    border-left: 1px solid var(--border2);
+    margin-left: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav style="border-bottom: 1px solid var(--border); background: var(--bg); padding: 15px 20px;">
+    <div style="max-width: 820px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+      <div style="display:flex; align-items:center;">
+         <img src="logo.png" alt="Logo" style="height: 36px; border-radius: 4px;">
+         <div style="width:1px; height:14px; background:var(--border2); margin:0 12px;"></div>
+         <span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--text3);">Analytical Partner</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Predictor</a>
+        <a href="colleges.html" class="nav-link nav-link-active">Colleges</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="privacy.html" class="nav-link">Privacy Policy</a>
+        <a href="https://distancetoplanets.com" target="_blank" rel="noopener" class="nav-link nav-link-pill">Our Work ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="header">
+    <div class="header-eyebrow">Kerala Engineering Admission 2026</div>
+    <h1>KEAM College <em>Cutoffs</em></h1>
+    <p class="header-sub">Last year's closing ranks for top Kerala engineering colleges, by branch and category</p>
+    <p style="font-size:11px; color:var(--text3); margin-top:6px;">Owned by <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener" style="color:var(--text3); text-decoration:underline;">GoFinanciallyFit.com</a></p>
+  </header>
+
+  <section class="info-article" style="margin-top:32px;">
+    <div class="info-block">
+      <p>The figures below are <strong>KEAM 2025 closing ranks</strong> (Round 3 / final round, General/State Merit category unless noted) — the most recently completed admission cycle, used as the reference point for planning your 2026 choices. CEE Kerala publishes the official KEAM 2026 closing ranks only after each round of counselling concludes, so treat these as directional guidance rather than guaranteed cutoffs. Once you have your estimated rank from the <a href="index.html" style="color:var(--accent); text-decoration:none;">KEAM Rank Predictor</a>, compare it against the ranges below to shortlist realistic options.</p>
+    </div>
+
+    <h2>Computer Science Engineering (CSE)</h2>
+    <div class="info-block">
+      <div class="dates-table-wrap">
+        <table class="dates-table">
+          <thead>
+            <tr><th>College</th><th>2025 Closing Rank (Gen.)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="dt-event">College of Engineering, Trivandrum (CET)</td><td class="dt-date">~271 – 571</td></tr>
+            <tr><td class="dt-event">Government Engineering College, Thrissur</td><td class="dt-date">~550 – 1,100</td></tr>
+            <tr><td class="dt-event">TKM College of Engineering, Kollam</td><td class="dt-date">~1,487 – 2,279</td></tr>
+            <tr><td class="dt-event">Rajiv Gandhi Institute of Technology, Kottayam</td><td class="dt-date">~1,800 – 2,700</td></tr>
+            <tr><td class="dt-event">Government Model Engineering College (MEC), Thrikkakara</td><td class="dt-date">~2,000 – 3,200</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="dates-note">CSE remains the most competitive branch across all government colleges. A safe index score for Tier-1 CSE seats is typically 540+ out of 600.</div>
+    </div>
+
+    <h2>Electronics &amp; Communication (ECE)</h2>
+    <div class="info-block">
+      <div class="dates-table-wrap">
+        <table class="dates-table">
+          <thead>
+            <tr><th>College</th><th>2025 Closing Rank (Gen.)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="dt-event">College of Engineering, Trivandrum (CET)</td><td class="dt-date">~730 – 1,200</td></tr>
+            <tr><td class="dt-event">Government Engineering College, Thrissur</td><td class="dt-date">~1,634 – 2,800</td></tr>
+            <tr><td class="dt-event">TKM College of Engineering, Kollam</td><td class="dt-date">~2,199 – 4,500</td></tr>
+            <tr><td class="dt-event">Government Model Engineering College (MEC), Thrikkakara</td><td class="dt-date">~3,500 – 5,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2>Mechanical &amp; Electrical Engineering</h2>
+    <div class="info-block">
+      <div class="dates-table-wrap">
+        <table class="dates-table">
+          <thead>
+            <tr><th>College / Branch</th><th>2025 Closing Rank (Gen.)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="dt-event">CET Trivandrum — Mechanical</td><td class="dt-date">~2,930 – 3,500</td></tr>
+            <tr><td class="dt-event">CET Trivandrum — Electrical &amp; Electronics</td><td class="dt-date">~1,768 – 3,000</td></tr>
+            <tr><td class="dt-event">Government Engineering College, Thrissur — Mechanical</td><td class="dt-date">~5,000 – 5,462</td></tr>
+            <tr><td class="dt-event">TKM Kollam — Electrical &amp; Electronics</td><td class="dt-date">~3,853 – 6,008</td></tr>
+            <tr><td class="dt-event">TKM Kollam — Civil Engineering</td><td class="dt-date">~9,896 – 11,941</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="dates-note">Core branches (Mechanical, Civil, EEE) generally have higher closing ranks than CSE/ECE — meaning more candidates qualify for admission at the same college.</div>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="info-block">
+      <div class="faq-row">
+        <div class="faq-q">Are these the official KEAM 2026 cutoffs?</div>
+        <div class="faq-a">No — KEAM 2026 cutoffs will only be known after each round of the 2026 counselling process. The figures shown here are KEAM 2025 closing ranks, the latest completed cycle, used to help you plan realistic choices. Always confirm final cutoffs on <strong style="color:var(--text2);">cee.kerala.gov.in</strong>.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">Do cutoffs change between counselling rounds?</div>
+        <div class="faq-a">Yes. Closing ranks typically loosen slightly in Round 2 and Round 3 as higher-ranked candidates move to other allotments, vacating seats. Round 1 cutoffs are usually the tightest.</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">How do reserved category cutoffs differ from General Merit?</div>
+        <div class="faq-a">Reserved category candidates (SC, ST, EZ, MU, and others) typically see significantly relaxed closing ranks due to category-specific seat allocation — often several times looser than the General/State Merit closing rank for the same college and branch. Use the <a href="index.html" style="color:var(--accent); text-decoration:none;">Rank Predictor</a> with your specific category for a closer estimate.</div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="internal-link-row">
+        <div class="il-text"><strong>Not sure where your marks land?</strong> Calculate your estimated KEAM 2026 index score and rank first.</div>
+        <a href="index.html">Use the Rank Predictor →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    KEAM 2026 College Cutoffs · Based on KEAM 2025 closing rank data · Not an official CEE Kerala publication<br>
+    © 2026 <a href="https://gofinanciallyfit.com" target="_blank" rel="noopener" style="color:var(--text3); text-decoration:none;">GoFinanciallyFit.com</a>
+  </footer>
+</div>
+</body>
+</html>

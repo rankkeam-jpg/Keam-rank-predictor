@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D13;
+    --card:#12151D;
+    --card-hover:#161A24;
+    --ink:#EDEAE0;
+    --ink-soft:#8A93A3;
+    --gold:#D4AF37;
+    --gold-dim:#B8963A;
+    --rust:#E2574C;
+    --line: rgba(237,234,224,0.12);
+    --shadow: 0 1px 0 rgba(0,0,0,0.4), 0 12px 30px -14px rgba(0,0,0,0.6);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1000px 500px at 12% -8%, rgba(212,175,55,0.06), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter', system-ui, sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:48px 24px 120px;}
+
+  /* header */
+  header.site{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:20px; margin-bottom:44px; padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+  }
+  .site-title-wrap{flex:1; min-width:0;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--gold); margin:0 0 8px;
+  }
+  h1.site-title{
+    font-family:'Playfair Display', serif; font-weight:600; font-size:clamp(32px,6vw,52px);
+    line-height:1.05; margin:0; letter-spacing:-0.01em; color:var(--ink);
+  }
+  h1.site-title em{ color:var(--gold); font-style:italic; font-weight:500; }
+  p.site-tagline{
+    margin:10px 0 0; color:var(--ink-soft); font-size:16px; max-width:52ch;
+  }
+  .settings-btn{
+    background:none;border:1px solid var(--line); color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em;
+    padding:7px 12px; border-radius:20px; cursor:pointer; white-space:nowrap;
+    transition:.15s ease;
+  }
+  .settings-btn:hover{border-color:var(--gold); color:var(--gold);}
+
+  /* new post bar */
+  .toolbar{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; margin-bottom:32px;
+  }
+  .post-count{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); letter-spacing:.03em;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.02em;
+    border:none; border-radius:8px; padding:11px 18px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px; transition:.15s ease;
+  }
+  .btn-primary{background:var(--gold); color:#191204;}
+  .btn-primary:hover{background:var(--gold-dim);}
+  .btn-ghost{background:transparent; color:var(--ink-soft); border:1px solid var(--line);}
+  .btn-ghost:hover{color:var(--ink); border-color:var(--ink-soft);}
+  .btn-danger{background:transparent; color:var(--rust); border:1px solid rgba(226,87,76,0.35);}
+  .btn-danger:hover{background:rgba(226,87,76,0.1);}
+
+  /* empty state */
+  .empty{
+    text-align:center; padding:80px 20px; border:1.5px dashed var(--line); border-radius:14px;
+    color:var(--ink-soft);
+  }
+  .empty .pencil{font-size:28px; display:block; margin-bottom:14px; color:var(--gold);}
+  .empty h3{font-family:'Playfair Display',serif; font-size:22px; color:var(--ink); margin:0 0 8px; font-weight:600;}
+  .empty p{margin:0 0 20px; font-size:15px;}
+
+  /* posts grid */
+  .grid{display:grid; grid-template-columns:1fr; gap:22px;}
+  @media(min-width:700px){ .grid{grid-template-columns:1fr 1fr;} }
+
+  .card{
+    position:relative;
+    background:var(--card);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    padding:26px 24px 22px;
+    display:flex; flex-direction:column; gap:12px;
+    border:1px solid var(--line);
+    transition:.15s ease;
+  }
+  .card:hover{ background:var(--card-hover); border-color:rgba(212,175,55,0.3); }
+  .card::before{
+    content:"";
+    position:absolute; top:0; left:24px; width:30px; height:3px;
+    background:var(--gold);
+    border-radius:0 0 3px 3px;
+    opacity:.85;
+  }
+  .card-date{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+    color:var(--ink-soft); text-transform:uppercase;
+  }
+  .card-title{
+    font-family:'Playfair Display',serif; font-weight:600; font-size:23px; line-height:1.2;
+    margin:0; color:var(--ink);
+  }
+  .card-body{
+    font-size:15px; line-height:1.6; color:#B3B9C4;
+    white-space:pre-wrap;
+    display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .card-actions{
+    margin-top:auto; padding-top:10px; display:flex; gap:8px; border-top:1px solid var(--line);
+  }
+  .card-actions button{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; background:none; border:none;
+    cursor:pointer; color:var(--ink-soft); padding:6px 8px; border-radius:6px;
+  }
+  .card-actions button:hover{color:var(--gold); background:rgba(212,175,55,0.08);}
+  .card-actions .del:hover{color:var(--rust); background:rgba(226,87,76,0.1);}
+
+  /* modal */
+  .overlay{
+    position:fixed; inset:0; background:rgba(4,5,8,0.7);
+    display:none; align-items:flex-start; justify-content:center;
+    padding:40px 16px; z-index:50; overflow-y:auto;
+  }
+  .overlay.open{display:flex;}
+  .modal{
+    background:var(--card); border-radius:14px; width:100%; max-width:600px;
+    padding:30px 28px 26px; box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    border:1px solid var(--line);
+  }
+  .modal h2{
+    font-family:'Playfair Display',serif; font-size:24px; font-weight:600; margin:0 0 20px; color:var(--ink);
+  }
+  label{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 6px;
+  }
+  .field{margin-bottom:18px;}
+  input[type=text], textarea{
+    width:100%; font-family:'Inter', system-ui, sans-serif; font-size:16px;
+    padding:12px 13px; border:1.5px solid var(--line); border-radius:8px;
+    background:#0D1017; color:var(--ink); resize:vertical;
+  }
+  input[type=text]::placeholder, textarea::placeholder{ color:#5B6272; }
+  input[type=text]:focus, textarea:focus{ outline:none; border-color:var(--gold); }
+  textarea{min-height:220px; line-height:1.55;}
+  .modal-actions{display:flex; justify-content:space-between; align-items:center; margin-top:6px; gap:10px;}
+  .modal-actions .right{display:flex; gap:8px;}
+  .hint{font-size:13px; color:var(--ink-soft); margin:-8px 0 18px;}
+  .status{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); margin-top:6px; min-height:16px;}
+
+  footer.note{
+    margin-top:56px; padding-top:18px; border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); text-align:center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site">
+    <div class="site-title-wrap">
+      <p class="eyebrow">Est. <span id="siteYear"></span></p>
+      <h1 class="site-title" id="siteTitle">Loading…</h1>
+      <p class="site-tagline" id="siteTagline"></p>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="settings-btn" id="editSiteBtn" style="display:none;">✎ Edit blog name</button>
+      <button class="settings-btn" id="adminSignInBtn">Sign in as admin</button>
+      <button class="settings-btn" id="adminSignOutBtn" style="display:none;">Log out</button>
+    </div>
+  </header>
+
+  <div class="toolbar" id="toolbar" style="display:none;">
+    <span class="post-count" id="postCount"></span>
+    <button class="btn btn-primary" id="newPostBtn">＋ New post</button>
+  </div>
+  <div class="toolbar" id="toolbarReadonly">
+    <span class="post-count" id="postCountReadonly"></span>
+  </div>
+
+  <div id="loading" style="text-align:center;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;font-size:13px;padding:40px 0;">Loading posts…</div>
+  <div class="grid" id="grid" style="display:none;"></div>
+  <div class="empty" id="emptyState" style="display:none;">
+    <span class="pencil">✎</span>
+    <h3 id="emptyHeading">Nothing here yet</h3>
+    <p id="emptyText">Click "New post" above to write your first one. No coding needed — just type and save.</p>
+    <button class="btn btn-primary" id="emptyNewBtn">＋ New post</button>
+  </div>
+
+  <footer class="note">Everyone who opens this page sees the same posts — anyone with the link can add, edit, or delete. Keep the link private if that matters to you.</footer>
+</div>
+
+<!-- Post editor modal -->
+<div class="overlay" id="postOverlay">
+  <div class="modal">
+    <h2 id="modalHeading">New post</h2>
+    <div class="field">
+      <label for="postTitle">Title</label>
+      <input type="text" id="postTitle" placeholder="Give your post a title">
+    </div>
+    <div class="field">
+      <label for="postBody">Content</label>
+      <textarea id="postBody" placeholder="Write your post here. Press Enter for new paragraphs."></textarea>
+    </div>
+    <div class="modal-actions">
+      <div>
+        <button class="btn btn-danger" id="deletePostBtn" style="display:none;">Delete post</button>
+      </div>
+      <div class="right">
+        <button class="btn btn-ghost" id="cancelPostBtn">Cancel</button>
+        <button class="btn btn-primary" id="savePostBtn">Save post</button>
+      </div>
+    </div>
+    <div class="status" id="postStatus"></div>
+  </div>
+</div>
+
+<!-- Site settings modal -->
+<div class="overlay" id="siteOverlay">
+  <div class="modal">
+    <h2>Edit blog name</h2>
+    <div class="field">
+      <label for="siteTitleInput">Blog title</label>
+      <input type="text" id="siteTitleInput" placeholder="e.g. Field Notes">
+    </div>
+    <div class="field">
+      <label for="siteTaglineInput">Tagline (optional)</label>
+      <input type="text" id="siteTaglineInput" placeholder="A short line under your title">
+    </div>
+    <p class="hint">This changes the header for everyone who visits this page.</p>
+    <div class="modal-actions">
+      <div></div>
+      <div class="right">
+        <button class="btn btn-ghost" id="cancelSiteBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveSiteBtn">Save</button>
+      </div>
+    </div>
+    <div class="status" id="siteStatus"></div>
+  </div>
+</div>
+
+<!-- Admin sign in / setup modal -->
+<div class="overlay" id="adminOverlay">
+  <div class="modal">
+    <h2 id="adminModalHeading">Sign in as admin</h2>
+    <p class="hint" id="adminModalHint">Enter the admin password to add, edit, or delete posts.</p>
+    <div class="field">
+      <label for="adminPassInput" id="adminPassLabel">Password</label>
+      <input type="text" id="adminPassInput" placeholder="Enter password" autocomplete="off">
+    </div>
+    <div class="field" id="adminConfirmField" style="display:none;">
+      <label for="adminPassConfirm">Confirm password</label>
+      <input type="text" id="adminPassConfirm" placeholder="Re-enter password" autocomplete="off">
+    </div>
+    <div class="modal-actions">
+      <div></div>
+      <div class="right">
+        <button class="btn btn-ghost" id="cancelAdminBtn">Cancel</button>
+        <button class="btn btn-primary" id="submitAdminBtn">Sign in</button>
+      </div>
+    </div>
+    <div class="status" id="adminStatus"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  document.getElementById('siteYear').textContent = new Date().getFullYear();
+
+  const POSTS_KEY = 'blog-posts';
+  const SETTINGS_KEY = 'blog-settings';
+  const ADMIN_KEY = 'blog-admin-pass';
+  const DEFAULT_SETTINGS = { title: 'My Blog', tagline: 'Thoughts, updates, and things worth writing down.' };
+
+  let posts = [];
+  let settings = DEFAULT_SETTINGS;
+  let editingId = null; // null = creating new
+  let isAdmin = false;
+  let adminPasswordSet = false;
+  let adminPasswordCache = null; // only held in memory for this session, never persisted client-side
+
+  const grid = document.getElementById('grid');
+  const loading = document.getElementById('loading');
+  const emptyState = document.getElementById('emptyState');
+  const postCount = document.getElementById('postCount');
+  const siteTitleEl = document.getElementById('siteTitle');
+  const siteTaglineEl = document.getElementById('siteTagline');
+
+  function fmtDate(iso){
+    const d = new Date(iso);
+    return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+  }
+
+  function escapeHtml(s){
+    const div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  async function loadAll(){
+    try{
+      const settingsRes = await window.storage.get(SETTINGS_KEY, true);
+      settings = settingsRes && settingsRes.value ? JSON.parse(settingsRes.value) : DEFAULT_SETTINGS;
+    }catch(e){ settings = DEFAULT_SETTINGS; }
+
+    try{
+      const postsRes = await window.storage.get(POSTS_KEY, true);
+      posts = postsRes && postsRes.value ? JSON.parse(postsRes.value) : [];
+    }catch(e){ posts = []; }
+
+    try{
+      const adminRes = await window.storage.get(ADMIN_KEY, true);
+      adminPasswordSet = !!(adminRes && adminRes.value);
+    }catch(e){ adminPasswordSet = false; }
+
+    renderSite();
+    renderPosts();
+    renderAdminUI();
+    loading.style.display = 'none';
+  }
+
+  function renderAdminUI(){
+    document.getElementById('editSiteBtn').style.display = isAdmin ? 'inline-flex' : 'none';
+    document.getElementById('adminSignInBtn').style.display = isAdmin ? 'none' : 'inline-flex';
+    document.getElementById('adminSignOutBtn').style.display = isAdmin ? 'inline-flex' : 'none';
+    document.getElementById('toolbar').style.display = isAdmin ? 'flex' : 'none';
+    document.getElementById('toolbarReadonly').style.display = isAdmin ? 'none' : 'flex';
+    document.getElementById('postCountReadonly').textContent = document.getElementById('postCount').textContent;
+    renderPosts();
+  }
+
+  function renderSite(){
+    const t = settings.title || DEFAULT_SETTINGS.title;
+    const words = t.trim().split(/\s+/);
+    if(words.length > 1){
+      const last = words.pop();
+      siteTitleEl.innerHTML = escapeHtml(words.join(' ')) + ' <em>' + escapeHtml(last) + '</em>';
+    } else {
+      siteTitleEl.innerHTML = '<em>' + escapeHtml(t) + '</em>';
+    }
+    siteTaglineEl.textContent = settings.tagline || '';
+    siteTaglineEl.style.display = settings.tagline ? 'block' : 'none';
+    document.title = t;
+  }
+
+  function renderPosts(){
+    const sorted = [...posts].sort((a,b)=> new Date(b.updatedAt||b.createdAt) - new Date(a.updatedAt||a.createdAt));
+    const countText = posts.length + (posts.length === 1 ? ' post' : ' posts');
+    postCount.textContent = countText;
+    document.getElementById('postCountReadonly').textContent = countText;
+
+    if(sorted.length === 0){
+      grid.style.display = 'none';
+      emptyState.style.display = 'block';
+      document.getElementById('emptyNewBtn').style.display = isAdmin ? 'inline-flex' : 'none';
+      document.getElementById('emptyHeading').textContent = isAdmin ? 'Nothing here yet' : 'No posts yet';
+      document.getElementById('emptyText').textContent = isAdmin
+        ? 'Click "New post" above to write your first one. No coding needed — just type and save.'
+        : 'Check back soon.';
+      return;
+    }
+    emptyState.style.display = 'none';
+    grid.style.display = 'grid';
+    grid.innerHTML = sorted.map(p => `
+      <article class="card" data-id="${p.id}">
+        <div class="card-date">${fmtDate(p.createdAt)}${p.updatedAt && p.updatedAt !== p.createdAt ? ' · edited' : ''}</div>
+        <h3 class="card-title">${escapeHtml(p.title || 'Untitled')}</h3>
+        <div class="card-body">${escapeHtml(p.content || '')}</div>
+        ${isAdmin ? `<div class="card-actions">
+          <button class="edit" data-id="${p.id}">✎ Edit</button>
+          <button class="del" data-id="${p.id}">🗑 Delete</button>
+        </div>` : ''}
+      </article>
+    `).join('');
+
+    if(isAdmin){
+      grid.querySelectorAll('.edit').forEach(btn=>{
+        btn.addEventListener('click', ()=> openEditor(btn.dataset.id));
+      });
+      grid.querySelectorAll('.del').forEach(btn=>{
+        btn.addEventListener('click', ()=> deletePost(btn.dataset.id));
+      });
+    }
+  }
+
+  async function savePostsToStorage(){
+    const status = document.getElementById('postStatus');
+    try{
+      const res = await window.storage.set(POSTS_KEY, JSON.stringify(posts), true);
+      if(!res){ status.textContent = 'Could not save. Please try again.'; return false; }
+      return true;
+    }catch(e){
+      status.textContent = 'Could not save. Please try again.';
+      return false;
+    }
+  }
+
+  // ---- Post modal ----
+  const postOverlay = document.getElementById('postOverlay');
+  const postTitleInput = document.getElementById('postTitle');
+  const postBodyInput = document.getElementById('postBody');
+  const modalHeading = document.getElementById('modalHeading');
+  const deleteBtn = document.getElementById('deletePostBtn');
+  const postStatus = document.getElementById('postStatus');
+
+  function openNewPost(){
+    editingId = null;
+    modalHeading.textContent = 'New post';
+    postTitleInput.value = '';
+    postBodyInput.value = '';
+    deleteBtn.style.display = 'none';
+    postStatus.textContent = '';
+    postOverlay.classList.add('open');
+    setTimeout(()=> postTitleInput.focus(), 50);
+  }
+
+  function openEditor(id){
+    const p = posts.find(x=>x.id === id);
+    if(!p) return;
+    editingId = id;
+    modalHeading.textContent = 'Edit post';
+    postTitleInput.value = p.title || '';
+    postBodyInput.value = p.content || '';
+    deleteBtn.style.display = 'inline-flex';
+    postStatus.textContent = '';
+    postOverlay.classList.add('open');
+    setTimeout(()=> postTitleInput.focus(), 50);
+  }
+
+  function closePostModal(){
+    postOverlay.classList.remove('open');
+  }
+
+  async function savePost(){
+    if(!isAdmin){ postStatus.textContent = 'Sign in as admin to save posts.'; return; }
+    const title = postTitleInput.value.trim();
+    const content = postBodyInput.value.trim();
+    if(!title && !content){
+      postStatus.textContent = 'Write something before saving.';
+      return;
+    }
+    const now = new Date().toISOString();
+    postStatus.textContent = 'Saving…';
+
+    if(editingId){
+      const idx = posts.findIndex(p=>p.id === editingId);
+      if(idx > -1){
+        posts[idx] = { ...posts[idx], title, content, updatedAt: now };
+      }
+    } else {
+      posts.push({
+        id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2,7),
+        title, content, createdAt: now, updatedAt: now
+      });
+    }
+
+    const ok = await savePostsToStorage();
+    if(ok){
+      renderPosts();
+      closePostModal();
+    }
+  }
+
+  async function deletePost(id){
+    if(!isAdmin) return;
+    if(!confirm('Delete this post? This cannot be undone.')) return;
+    posts = posts.filter(p=>p.id !== id);
+    const ok = await savePostsToStorage();
+    if(ok) renderPosts();
+  }
+
+  document.getElementById('newPostBtn').addEventListener('click', openNewPost);
+  document.getElementById('emptyNewBtn').addEventListener('click', openNewPost);
+  document.getElementById('cancelPostBtn').addEventListener('click', closePostModal);
+  document.getElementById('savePostBtn').addEventListener('click', savePost);
+  deleteBtn.addEventListener('click', ()=>{ if(editingId){ closePostModal(); deletePost(editingId);} });
+  postOverlay.addEventListener('click', (e)=>{ if(e.target === postOverlay) closePostModal(); });
+
+  // ---- Site settings modal ----
+  const siteOverlay = document.getElementById('siteOverlay');
+  const siteTitleInput = document.getElementById('siteTitleInput');
+  const siteTaglineInput = document.getElementById('siteTaglineInput');
+  const siteStatus = document.getElementById('siteStatus');
+
+  document.getElementById('editSiteBtn').addEventListener('click', ()=>{
+    siteTitleInput.value = settings.title || '';
+    siteTaglineInput.value = settings.tagline || '';
+    siteStatus.textContent = '';
+    siteOverlay.classList.add('open');
+    setTimeout(()=> siteTitleInput.focus(), 50);
+  });
+  document.getElementById('cancelSiteBtn').addEventListener('click', ()=> siteOverlay.classList.remove('open'));
+  siteOverlay.addEventListener('click', (e)=>{ if(e.target === siteOverlay) siteOverlay.classList.remove('open'); });
+
+  document.getElementById('saveSiteBtn').addEventListener('click', async ()=>{
+    const title = siteTitleInput.value.trim() || DEFAULT_SETTINGS.title;
+    const tagline = siteTaglineInput.value.trim();
+    siteStatus.textContent = 'Saving…';
+    try{
+      const res = await window.storage.set(SETTINGS_KEY, JSON.stringify({title, tagline}), true);
+      if(res){
+        settings = {title, tagline};
+        renderSite();
+        siteOverlay.classList.remove('open');
+      } else {
+        siteStatus.textContent = 'Could not save. Please try again.';
+      }
+    }catch(e){
+      siteStatus.textContent = 'Could not save. Please try again.';
+    }
+  });
+
+  // ---- Admin sign in / setup ----
+  const adminOverlay = document.getElementById('adminOverlay');
+  const adminModalHeading = document.getElementById('adminModalHeading');
+  const adminModalHint = document.getElementById('adminModalHint');
+  const adminPassLabel = document.getElementById('adminPassLabel');
+  const adminPassInput = document.getElementById('adminPassInput');
+  const adminConfirmField = document.getElementById('adminConfirmField');
+  const adminPassConfirm = document.getElementById('adminPassConfirm');
+  const submitAdminBtn = document.getElementById('submitAdminBtn');
+  const adminStatus = document.getElementById('adminStatus');
+
+  document.getElementById('adminSignInBtn').addEventListener('click', ()=>{
+    adminPassInput.value = '';
+    adminPassConfirm.value = '';
+    adminStatus.textContent = '';
+    if(adminPasswordSet){
+      adminModalHeading.textContent = 'Sign in as admin';
+      adminModalHint.textContent = 'Enter the admin password to add, edit, or delete posts.';
+      adminPassLabel.textContent = 'Password';
+      adminConfirmField.style.display = 'none';
+      submitAdminBtn.textContent = 'Sign in';
+    } else {
+      adminModalHeading.textContent = 'Create admin password';
+      adminModalHint.textContent = 'No admin password is set yet. Create one now — you\'ll use it to sign in and manage posts from any device.';
+      adminPassLabel.textContent = 'New password';
+      adminConfirmField.style.display = 'block';
+      submitAdminBtn.textContent = 'Create password';
+    }
+    adminOverlay.classList.add('open');
+    setTimeout(()=> adminPassInput.focus(), 50);
+  });
+
+  document.getElementById('cancelAdminBtn').addEventListener('click', ()=> adminOverlay.classList.remove('open'));
+  adminOverlay.addEventListener('click', (e)=>{ if(e.target === adminOverlay) adminOverlay.classList.remove('open'); });
+
+  submitAdminBtn.addEventListener('click', async ()=>{
+    const pass = adminPassInput.value;
+    if(!pass){
+      adminStatus.textContent = 'Enter a password.';
+      return;
+    }
+    if(!adminPasswordSet){
+      const confirm2 = adminPassConfirm.value;
+      if(pass.length < 4){
+        adminStatus.textContent = 'Use at least 4 characters.';
+        return;
+      }
+      if(pass !== confirm2){
+        adminStatus.textContent = 'Passwords don\'t match.';
+        return;
+      }
+      adminStatus.textContent = 'Saving…';
+      try{
+        const res = await window.storage.set(ADMIN_KEY, pass, true);
+        if(!res){ adminStatus.textContent = 'Could not save. Try again.'; return; }
+        adminPasswordSet = true;
+        isAdmin = true;
+        adminOverlay.classList.remove('open');
+        renderAdminUI();
+      }catch(e){
+        adminStatus.textContent = 'Could not save. Try again.';
+      }
+    } else {
+      adminStatus.textContent = 'Checking…';
+      try{
+        const res = await window.storage.get(ADMIN_KEY, true);
+        const stored = res && res.value ? res.value : null;
+        if(stored !== null && pass === stored){
+          isAdmin = true;
+          adminOverlay.classList.remove('open');
+          renderAdminUI();
+        } else {
+          adminStatus.textContent = 'Incorrect password.';
+        }
+      }catch(e){
+        adminStatus.textContent = 'Something went wrong. Try again.';
+      }
+    }
+  });
+
+  document.getElementById('adminSignOutBtn').addEventListener('click', ()=>{
+    isAdmin = false;
+    renderAdminUI();
+  });
+
+  loadAll();
+})();
+</script>
+</body>
+</html>
